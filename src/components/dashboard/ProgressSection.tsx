@@ -1,4 +1,4 @@
-import { Activity, Dumbbell, Timer } from "lucide-react";
+import { Activity, Dumbbell, Timer, Weight, Bike, Yoga } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { PieChart, Pie, ResponsiveContainer, Cell } from "recharts";
 
@@ -39,7 +39,7 @@ export const ProgressSection = () => {
           <div className="text-base text-gray-500">Goal</div>
         </div>
       </div>
-      <div className="space-y-6">
+      <div className="space-y-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-3">
             <Dumbbell className="w-6 h-6 text-[#9b87f5]" />
@@ -60,6 +60,27 @@ export const ProgressSection = () => {
             <span className="text-base">Flexibility Training</span>
           </div>
           <span className="text-base font-medium">65%</span>
+        </div>
+        <div className="flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <Weight className="w-6 h-6 text-[#9b87f5]" />
+            <span className="text-base">Weight Training</span>
+          </div>
+          <span className="text-base font-medium">70%</span>
+        </div>
+        <div className="flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <Bike className="w-6 h-6 text-[#9b87f5]" />
+            <span className="text-base">Cycling Training</span>
+          </div>
+          <span className="text-base font-medium">80%</span>
+        </div>
+        <div className="flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <Yoga className="w-6 h-6 text-[#9b87f5]" />
+            <span className="text-base">Yoga Practice</span>
+          </div>
+          <span className="text-base font-medium">60%</span>
         </div>
       </div>
     </Card>

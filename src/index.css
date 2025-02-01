@@ -45,7 +45,6 @@
   body {
     @apply bg-[#222222] text-foreground font-sans;
   }
-}
 
   /* Heading Styles */
   h1 { @apply text-[68px] leading-[102px] tracking-[0px] font-bold; }

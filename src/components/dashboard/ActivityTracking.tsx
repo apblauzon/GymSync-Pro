@@ -80,14 +80,14 @@ export const ActivityTracking = () => {
   };
 
   return (
-    <Card className="bg-white rounded-[25px] p-6 h-full">
-      <div className="flex justify-between items-center mb-6">
+    <Card className="bg-white rounded-[25px] p-4">
+      <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-semibold">Activity Tracking</h2>
         <RefreshCw className="w-5 h-5 text-gray-500" />
       </div>
 
       {/* Calendar Days */}
-      <div className="grid grid-cols-7 gap-2 mb-8">
+      <div className="grid grid-cols-7 gap-2 mb-4">
         {days.map((item, index) => (
           <div key={index} className="text-center">
             <div className="text-sm text-gray-600 mb-1">{item.day}</div>
@@ -103,7 +103,7 @@ export const ActivityTracking = () => {
       </div>
 
       {/* Activity Chart */}
-      <div className="h-[300px] mt-4">
+      <div className="h-[250px]">
         <Line data={chartData} options={options} />
       </div>
     </Card>

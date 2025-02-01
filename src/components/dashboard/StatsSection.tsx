@@ -20,7 +20,7 @@ export const StatsSection = () => {
   });
 
   return (
-    <Card className="col-span-6 bg-[#FFF9E7] p-4">
+    <Card className="w-[434px] h-[111px] bg-[#FFF9E7] p-4">
       <div className="grid grid-cols-3 gap-4">
         <div>
           <h3 className="text-gray-500 text-sm mb-1">Weight</h3>

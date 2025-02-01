@@ -10,33 +10,33 @@ import { WalkingTimeCard } from "@/components/dashboard/WalkingTimeCard";
 
 const Dashboard = () => {
   return (
-    <div className="min-h-screen bg-[#F8F7FF] p-10">
+    <div className="min-h-[870px] bg-[#F8F7FF] p-10">
       <div className="max-w-[1662px] mx-auto grid grid-cols-12 gap-6">
         {/* Left Column */}
-        <div className="col-span-3">
-          <div className="w-[300px] mb-6">
+        <div className="col-span-3 space-y-6">
+          <div className="w-[300px]">
             <ProgressSection />
           </div>
-          <div className="w-[320px]">
+          <div className="w-[320px] space-y-6">
             <HeartMetrics />
           </div>
         </div>
 
         {/* Middle Column */}
-        <div className="col-span-6">
-          <div className="w-[650px] mb-6">
+        <div className="col-span-6 space-y-6">
+          <div className="w-[650px]">
             <WalkingTimeCard />
           </div>
           
-          <div className="grid grid-cols-4 gap-4 mb-6">
+          <div className="grid grid-cols-4 gap-4">
             <StatsGrid />
           </div>
 
-          <div className="w-[463px] mb-6">
+          <div className="w-[463px]">
             <ProfileSection />
           </div>
 
-          <div className="w-[434px] mb-6">
+          <div className="w-[434px]">
             <StatsSection />
           </div>
 
@@ -46,18 +46,18 @@ const Dashboard = () => {
         </div>
 
         {/* Right Column */}
-        <div className="col-span-3">
-          <div className="w-[430px] mb-6">
+        <div className="col-span-3 space-y-6">
+          <div className="w-[430px]">
             <div className="h-[384px] bg-white rounded-xl p-4">
               <h2 className="text-lg font-semibold">Activity Tracking</h2>
             </div>
           </div>
 
-          <div className="w-[302px] mb-4">
+          <div className="w-[302px]">
             <UpcomingEvents />
           </div>
 
-          <div className="w-[302px] mb-6 bg-white rounded-xl p-4 h-[34px] flex items-center">
+          <div className="w-[302px] bg-white rounded-xl p-4 h-[34px] flex items-center">
             <span className="text-sm">View Gym Trainer Available</span>
           </div>
 

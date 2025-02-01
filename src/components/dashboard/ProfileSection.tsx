@@ -21,13 +21,13 @@ export const ProfileSection = () => {
   });
 
   return (
-    <Card className="col-span-6 bg-[#9b87f5] text-white p-4 h-full">
+    <Card className="w-[463px] h-[186px] bg-[#9b87f5] text-white p-4">
       <div className="flex justify-between items-center mb-3">
         <h2 className="text-base sm:text-lg font-semibold">My Profile</h2>
         <MoreHorizontal className="w-5 h-5" />
       </div>
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center overflow-hidden">
+        <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center overflow-hidden">
           <img 
             src="/lovable-uploads/49fec05a-cd8e-4715-b93f-7582ead9e45d.png" 
             alt="Profile" 
@@ -35,14 +35,14 @@ export const ProfileSection = () => {
           />
         </div>
         <div>
-          <h3 className="text-lg sm:text-xl font-semibold mb-1">{clientData?.name}</h3>
-          <div className="flex items-center gap-3 text-xs sm:text-sm">
+          <h3 className="text-xl font-semibold mb-1">{clientData?.name}</h3>
+          <div className="flex items-center gap-3 text-sm">
             <div className="flex items-center gap-1">
-              <Trophy size={12} className="sm:w-4 sm:h-4" />
+              <Trophy className="w-4 h-4" />
               <span>Advanced</span>
             </div>
             <div className="flex items-center gap-1">
-              <Activity size={12} className="sm:w-4 sm:h-4" />
+              <Activity className="w-4 h-4" />
               <span>14,750 steps</span>
             </div>
           </div>

@@ -27,7 +27,7 @@ export const LastSessionSection = () => {
   });
 
   return (
-    <Card className="col-span-12 bg-[#4CAF50] text-white p-4">
+    <Card className="w-[434px] h-[76px] bg-[#4CAF50] text-white p-4">
       <h2 className="text-lg font-semibold">
         Last Session: {workouts?.[0]?.start_time ? new Date(workouts[0].start_time).toLocaleDateString() : 'No sessions yet'}
       </h2>

@@ -11,74 +11,61 @@ import { ActivityTracking } from "@/components/dashboard/ActivityTracking";
 
 const Dashboard = () => {
   return (
-    <div className="min-h-[870px] bg-[#F8F7FF] p-6 lg:p-10">
-      <div className="max-w-[1662px] mx-auto grid grid-cols-12 gap-6">
+    <div className="min-h-screen bg-[#F8F7FF] p-4 lg:p-6">
+      <div className="max-w-[1662px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 lg:gap-6">
         {/* Left Section */}
-        <div className="col-span-12 lg:col-span-6">
-          {/* Top Section with Progress and Heart Metrics side by side */}
-          <div className="flex flex-col lg:flex-row gap-6 mb-6">
+        <div className="lg:col-span-5 space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Progress Component */}
-            <div className="w-full lg:w-[380px]">
+            <div className="w-full">
               <ProgressSection />
             </div>
             
             {/* Heart Metrics Components */}
-            <div className="w-full lg:w-[320px]">
+            <div className="w-full">
               <HeartMetrics />
             </div>
           </div>
 
-          {/* Running with Kate Component at the bottom */}
+          {/* Walking Time Card */}
           <div className="w-full">
             <WalkingTimeCard />
           </div>
         </div>
 
         {/* Center Section */}
-        <div className="col-span-12 lg:col-span-3">
-          <div className="grid grid-cols-2 gap-4 mb-6">
+        <div className="lg:col-span-4 space-y-4">
+          <div className="grid grid-cols-2 gap-4">
             <StatsGrid />
           </div>
 
-          {/* Profile Section */}
-          <div className="w-full max-w-[463px] mb-6">
-            <ProfileSection />
-          </div>
-
-          {/* Stats Section */}
-          <div className="w-full max-w-[434px] mb-6">
-            <StatsSection />
-          </div>
-
-          {/* Last Session Section */}
-          <div className="w-full max-w-[434px]">
-            <LastSessionSection />
-          </div>
+          <ProfileSection />
+          <StatsSection />
+          <LastSessionSection />
         </div>
 
         {/* Right Section */}
-        <div className="col-span-12 lg:col-span-3">
-          {/* Activity Tracking */}
-          <div className="w-full max-w-[430px] mb-6">
-            <ActivityTracking />
-          </div>
+        <div className="lg:col-span-3 space-y-4">
+          <div className="flex flex-col lg:flex-row xl:flex-col gap-4">
+            {/* Activity Tracking */}
+            <div className="w-full">
+              <ActivityTracking />
+            </div>
 
-          {/* Upcoming Events and Actions side by side */}
-          <div className="flex gap-4">
-            <div className="space-y-4">
-              {/* Upcoming Events */}
-              <div className="w-[302px]">
-                <UpcomingEvents />
+            {/* Right Side Components */}
+            <div className="flex flex-col gap-4">
+              <UpcomingEvents />
+              
+              {/* Actions Section with Download, Settings, Logout */}
+              <div className="flex lg:flex-col gap-4">
+                <ActionsSection />
               </div>
 
               {/* View Gym Trainer Available */}
-              <div className="w-[302px] bg-white rounded-xl p-4 h-[34px] flex items-center">
+              <div className="w-full bg-white rounded-xl p-4 h-[34px] flex items-center justify-center">
                 <span className="text-sm">View Gym Trainer Available</span>
               </div>
             </div>
-
-            {/* Action Buttons */}
-            <ActionsSection />
           </div>
         </div>
       </div>

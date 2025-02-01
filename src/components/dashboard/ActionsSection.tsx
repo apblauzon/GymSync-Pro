@@ -12,18 +12,18 @@ export const ActionsSection = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4">
-      <button className="w-[91px] h-[93px] flex flex-col items-center justify-center gap-2 bg-[#FF6B6B] text-white rounded-xl">
+    <div className="flex lg:flex-col gap-4">
+      <button className="w-full lg:w-[91px] h-[93px] flex flex-col items-center justify-center gap-2 bg-[#FF6B6B] text-white rounded-xl hover:opacity-90 transition-opacity">
         <Download className="w-6 h-6" />
         <span className="text-xs">Download</span>
       </button>
-      <button className="w-[91px] h-[93px] flex flex-col items-center justify-center gap-2 bg-[#9b87f5] text-white rounded-xl">
+      <button className="w-full lg:w-[91px] h-[93px] flex flex-col items-center justify-center gap-2 bg-[#9b87f5] text-white rounded-xl hover:opacity-90 transition-opacity">
         <Settings className="w-6 h-6" />
         <span className="text-xs">Settings</span>
       </button>
       <button 
         onClick={handleLogout}
-        className="w-[91px] h-[93px] flex flex-col items-center justify-center gap-2 bg-[#9747FF] text-white rounded-xl"
+        className="w-full lg:w-[91px] h-[93px] flex flex-col items-center justify-center gap-2 bg-[#9747FF] text-white rounded-xl hover:opacity-90 transition-opacity"
       >
         <LogOut className="w-6 h-6" />
         <span className="text-xs">Logout</span>

@@ -10,35 +10,55 @@ import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
 
 const Dashboard = () => {
   return (
-    <div className="h-screen bg-[#F8F7FF] p-3 sm:p-6 overflow-hidden">
-      <div className="max-w-[1800px] mx-auto grid grid-cols-12 gap-3 sm:gap-4 h-full">
-        {/* Left Column */}
-        <div className="col-span-12 lg:col-span-3 flex flex-col h-full">
-          <div className="flex-grow">
+    <div className="min-h-screen bg-[#F8F7FF] p-10">
+      <div className="max-w-[1662px] mx-auto grid grid-cols-12 gap-4">
+        {/* Left Column - Progress & Running with Kate */}
+        <div className="col-span-3">
+          <div className="w-[300px]">
             <ProgressSection />
           </div>
-          <WalkingTimeCard />
+          <div className="w-[300px] mt-4">
+            <WalkingTimeCard />
+          </div>
         </div>
 
-        {/* Heart Metrics Column */}
-        <div className="col-span-12 lg:col-span-3 h-full">
+        {/* Second Column - Heart Metrics */}
+        <div className="col-span-3">
           <HeartMetrics />
         </div>
 
-        {/* Middle Column */}
-        <div className="col-span-12 lg:col-span-3 grid grid-cols-12 gap-3 sm:gap-4 h-full">
-          <StatsGrid />
-          <ProfileSection />
-          <StatsSection />
-          <LastSessionSection />
+        {/* Middle Column - Stats, Profile, etc */}
+        <div className="col-span-4">
+          <div className="grid grid-cols-2 gap-4 mb-4">
+            <StatsGrid />
+          </div>
+          <div className="w-[463px]">
+            <ProfileSection />
+          </div>
+          <div className="w-[434px] mt-4">
+            <StatsSection />
+          </div>
+          <div className="w-[434px] mt-4">
+            <LastSessionSection />
+          </div>
         </div>
 
-        {/* Right Column */}
-        <div className="col-span-12 lg:col-span-3 flex flex-col gap-3 sm:gap-4 h-full">
-          <div className="flex-grow">
+        {/* Right Column - Activity & Actions */}
+        <div className="col-span-2">
+          <div className="w-[430px] mb-4">
+            <div className="h-[384px] bg-white rounded-xl p-4">
+              <h2 className="text-lg font-semibold">Activity Tracking</h2>
+            </div>
+          </div>
+          <div className="w-[302px]">
             <UpcomingEvents />
           </div>
-          <ActionsSection />
+          <div className="w-[302px] mt-4 bg-white rounded-xl p-4 h-[34px] flex items-center">
+            <span className="text-sm">View Gym Trainer Available</span>
+          </div>
+          <div className="mt-4">
+            <ActionsSection />
+          </div>
         </div>
       </div>
     </div>

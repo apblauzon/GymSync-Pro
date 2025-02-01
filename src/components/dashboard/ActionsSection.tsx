@@ -12,21 +12,21 @@ export const ActionsSection = () => {
   };
 
   return (
-    <div className="flex flex-col gap-3">
-      <button className="flex items-center justify-center gap-2 bg-[#FF6B6B] text-white p-3 rounded-xl text-sm">
-        <Download className="w-4 h-4" />
-        Download
+    <div className="flex gap-4">
+      <button className="w-[91px] h-[93px] flex flex-col items-center justify-center gap-2 bg-[#FF6B6B] text-white rounded-xl">
+        <Download className="w-6 h-6" />
+        <span className="text-xs">Download</span>
       </button>
-      <button className="flex items-center justify-center gap-2 bg-[#9b87f5] text-white p-3 rounded-xl text-sm">
-        <Settings className="w-4 h-4" />
-        Settings
+      <button className="w-[91px] h-[93px] flex flex-col items-center justify-center gap-2 bg-[#9b87f5] text-white rounded-xl">
+        <Settings className="w-6 h-6" />
+        <span className="text-xs">Settings</span>
       </button>
       <button 
         onClick={handleLogout}
-        className="flex items-center justify-center gap-2 bg-[#9747FF] text-white p-3 rounded-xl text-sm"
+        className="w-[91px] h-[93px] flex flex-col items-center justify-center gap-2 bg-[#9747FF] text-white rounded-xl"
       >
-        <LogOut className="w-4 h-4" />
-        Logout
+        <LogOut className="w-6 h-6" />
+        <span className="text-xs">Logout</span>
       </button>
     </div>
   );

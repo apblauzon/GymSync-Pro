@@ -13,11 +13,11 @@ const Dashboard = () => {
     <div className="min-h-[870px] bg-[#F8F7FF] p-10">
       <div className="max-w-[1662px] mx-auto grid grid-cols-12 gap-6">
         {/* Left Section */}
-        <div className="col-span-3">
+        <div className="col-span-6">
           {/* Top Section with Progress and Heart Metrics side by side */}
           <div className="flex gap-6 mb-6">
             {/* Progress Component */}
-            <div className="w-[300px]">
+            <div className="w-[450px]">
               <ProgressSection />
             </div>
             
@@ -34,8 +34,8 @@ const Dashboard = () => {
         </div>
 
         {/* Center Section */}
-        <div className="col-span-6 space-y-6">
-          <div className="grid grid-cols-4 gap-4">
+        <div className="col-span-3 space-y-6">
+          <div className="grid grid-cols-2 gap-4">
             <StatsGrid />
           </div>
 

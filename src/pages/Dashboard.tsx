@@ -3,7 +3,6 @@ import { HeartMetrics } from "@/components/dashboard/HeartMetrics";
 import { StatsGrid } from "@/components/dashboard/StatsGrid";
 import { ProfileSection } from "@/components/dashboard/ProfileSection";
 import { StatsSection } from "@/components/dashboard/StatsSection";
-import { LastSessionSection } from "@/components/dashboard/LastSessionSection";
 import { ActionsSection } from "@/components/dashboard/ActionsSection";
 import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
 import { WalkingTimeCard } from "@/components/dashboard/WalkingTimeCard";
@@ -16,7 +15,7 @@ const Dashboard = () => {
         {/* Left Column - Progress and Heart Metrics */}
         <div className="col-span-5 grid grid-cols-2 gap-4 auto-rows-min">
           {/* Progress Section */}
-          <div className="col-span-1 h-[400px]">
+          <div className="col-span-1 pb-4">
             <ProgressSection />
           </div>
           
@@ -45,17 +44,12 @@ const Dashboard = () => {
           <div className="col-span-2">
             <StatsSection />
           </div>
-          
-          {/* Last Session - Full Width */}
-          <div className="col-span-2">
-            <LastSessionSection />
-          </div>
         </div>
 
         {/* Right Column */}
-        <div className="col-span-3 grid grid-cols-1 gap-4 auto-rows-min">
+        <div className="col-span-3 grid grid-cols-1 gap-2 auto-rows-min">
           {/* Activity Tracking */}
-          <div className="h-[500px]">
+          <div>
             <ActivityTracking />
           </div>
           

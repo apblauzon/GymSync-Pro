@@ -12,7 +12,8 @@ import {
   Timer,
   Route,
   Flame,
-  Dumbbell
+  Dumbbell,
+  Footprints
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery } from "@tanstack/react-query";
@@ -151,6 +152,30 @@ const Dashboard = () => {
               <span className="text-sm font-medium">65%</span>
             </div>
           </div>
+
+          {/* Walking Time Card */}
+          <Card className="mt-4 bg-[#F3E6FF] p-4 rounded-xl">
+            <div className="flex justify-between items-center mb-2">
+              <h3 className="font-semibold">Running with Kate</h3>
+              <button className="text-sm text-[#7B6EF6] hover:underline">
+                View more
+              </button>
+            </div>
+            <div className="text-sm text-gray-600 mb-4">
+              9 Jan, 2025
+            </div>
+            <div className="flex justify-center mb-4">
+              <div className="relative">
+                <Footprints className="w-8 h-8 text-[#7B6EF6] absolute -left-8" />
+                <Footprints className="w-8 h-8 text-[#7B6EF6] absolute -right-8 transform scale-x-[-1]" />
+                <div className="border-t-2 border-[#7B6EF6] w-16"></div>
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-sm text-gray-600">Double Walking Time</div>
+              <div className="text-3xl font-bold text-[#7B6EF6]">34 min</div>
+            </div>
+          </Card>
         </Card>
 
         {/* Heart Beat Section */}

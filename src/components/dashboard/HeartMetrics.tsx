@@ -66,10 +66,20 @@ export const HeartMetrics = () => {
 
   const chartOptions = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: false,
       },
+      tooltip: {
+        mode: 'index',
+        intersect: false,
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        titleColor: '#1f2937',
+        bodyColor: '#1f2937',
+        borderColor: '#e5e7eb',
+        borderWidth: 1,
+      }
     },
     scales: {
       y: {
@@ -77,22 +87,35 @@ export const HeartMetrics = () => {
         grid: {
           display: false,
         },
+        ticks: {
+          color: '#6b7280',
+        },
       },
       x: {
         grid: {
           display: false,
         },
+        ticks: {
+          color: '#6b7280',
+        },
       },
+    },
+    interaction: {
+      mode: 'nearest',
+      axis: 'x',
+      intersect: false
     },
     elements: {
       point: {
         radius: 0,
+        hoverRadius: 6,
+        hoverBorderWidth: 2,
       },
     },
   };
 
   return (
-    <div className="grid grid-rows-[1.2fr,0.8fr] gap-4 h-full">
+    <div className="grid grid-rows-[1.3fr,0.7fr] gap-4 h-full">
       {/* Heart Beat Card */}
       <Card className="bg-gradient-to-br from-[#F97316]/10 to-[#FB923C]/5 p-5 rounded-[25px] flex flex-col transition-all duration-300 hover:shadow-lg hover:shadow-[#F97316]/10">
         <div className="flex justify-between items-center mb-3">
@@ -137,7 +160,7 @@ export const HeartMetrics = () => {
               </div>
             )}
           </div>
-          <div className="mt-auto h-32">
+          <div className="mt-auto h-48">
             <Line data={heartRateData} options={chartOptions} />
           </div>
         </div>
@@ -168,7 +191,7 @@ export const HeartMetrics = () => {
             </span>
           </div>
         </div>
-        <div className="h-24">
+        <div className="h-32">
           <Line data={performanceData} options={chartOptions} />
         </div>
       </Card>

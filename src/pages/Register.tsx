@@ -4,13 +4,18 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const Register = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    password: "",
     phone: "",
     birthday: "",
     gender: "",
@@ -32,11 +37,43 @@ const Register = () => {
   const nextStep = () => setStep(2);
   const prevStep = () => setStep(1);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here we would handle the registration logic
-    // For now, we'll just redirect to login
-    navigate("/login");
+    setIsLoading(true);
+
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          data: {
+            username: formData.name,
+          },
+        },
+      });
+
+      if (error) {
+        toast({
+          variant: "destructive",
+          title: "Registration failed",
+          description: error.message,
+        });
+      } else {
+        toast({
+          title: "Registration successful!",
+          description: "Please check your email to verify your account.",
+        });
+        navigate("/login");
+      }
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "An error occurred",
+        description: "Please try again later.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -73,6 +110,19 @@ const Register = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
+                />
+              </div>
+
+              <div className="form-group">
+                <Label htmlFor="password">Password</Label>
+                <Input
+                  id="password"
+                  name="password"
+                  type="password"
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  required
+                  minLength={6}
                 />
               </div>
 
@@ -174,8 +224,8 @@ const Register = () => {
                 <Button type="button" onClick={prevStep} variant="outline" className="w-full">
                   Back
                 </Button>
-                <Button type="submit" className="w-full">
-                  Complete Registration
+                <Button type="submit" className="w-full" disabled={isLoading}>
+                  {isLoading ? "Creating Account..." : "Complete Registration"}
                 </Button>
               </div>
             </>

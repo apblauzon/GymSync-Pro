@@ -21,13 +21,13 @@ export const ProfileSection = () => {
   });
 
   return (
-    <Card className="bg-[#9b87f5] text-white p-6 py-8 h-[160px] rounded-[25px]">
+    <Card className="bg-[#D3E4FD] text-gray-800 p-6 py-8 h-[160px] rounded-[25px] shadow-lg">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-semibold">My Profile</h2>
         <MoreHorizontal className="w-5 h-5" />
       </div>
       <div className="flex items-center gap-4">
-        <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center overflow-hidden">
+        <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center overflow-hidden shadow-md">
           <img 
             src="/lovable-uploads/49fec05a-cd8e-4715-b93f-7582ead9e45d.png" 
             alt="Profile" 
@@ -37,12 +37,12 @@ export const ProfileSection = () => {
         <div>
           <h3 className="text-2xl font-semibold mb-2">{clientData?.name}</h3>
           <div className="flex items-center gap-4 text-sm">
-            <div className="flex items-center gap-1">
-              <Trophy className="w-4 h-4" />
+            <div className="flex items-center gap-1 bg-white/50 px-3 py-1 rounded-full">
+              <Trophy className="w-4 h-4 text-blue-600" />
               <span>Advanced</span>
             </div>
-            <div className="flex items-center gap-1">
-              <Activity className="w-4 h-4" />
+            <div className="flex items-center gap-1 bg-white/50 px-3 py-1 rounded-full">
+              <Activity className="w-4 h-4 text-blue-600" />
               <span>14,750 steps</span>
             </div>
           </div>

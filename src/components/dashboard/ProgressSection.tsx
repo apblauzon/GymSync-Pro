@@ -7,11 +7,11 @@ const progressData = [
   { name: 'Remaining', value: 15 },
 ];
 
-const COLORS = ['#9b87f5', '#7E69AB'];
+const COLORS = ['#33C3F0', '#E8F4FF'];
 
 export const ProgressSection = () => {
   return (
-    <Card className="h-full p-8 rounded-[25px]">
+    <Card className="h-full p-8 rounded-[25px] shadow-lg">
       <div className="flex justify-between items-center mb-6">
         <h2 className="font-semibold text-xl">Progress</h2>
         <select className="bg-[#F3F0FF] px-3 py-1 rounded-full text-sm">
@@ -35,52 +35,64 @@ export const ProgressSection = () => {
           </PieChart>
         </ResponsiveContainer>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-          <div className="text-5xl font-bold">85%</div>
+          <div className="text-5xl font-bold text-[#33C3F0]">85%</div>
           <div className="text-base text-gray-500">Goal</div>
         </div>
       </div>
-      <div className="space-y-4">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <Dumbbell className="w-6 h-6 text-[#9b87f5]" />
-            <span className="text-base">Cardio Training</span>
+      <div className="space-y-6">
+        <div className="p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-3">
+              <Dumbbell className="w-6 h-6 text-[#33C3F0]" />
+              <span className="text-base">Cardio Training</span>
+            </div>
+            <span className="text-base font-medium">85%</span>
           </div>
-          <span className="text-base font-medium">85%</span>
         </div>
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <Activity className="w-6 h-6 text-[#9b87f5]" />
-            <span className="text-base">Strength Training</span>
+        <div className="p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-3">
+              <Activity className="w-6 h-6 text-[#33C3F0]" />
+              <span className="text-base">Strength Training</span>
+            </div>
+            <span className="text-base font-medium">75%</span>
           </div>
-          <span className="text-base font-medium">75%</span>
         </div>
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <Timer className="w-6 h-6 text-[#9b87f5]" />
-            <span className="text-base">Flexibility Training</span>
+        <div className="p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-3">
+              <Timer className="w-6 h-6 text-[#33C3F0]" />
+              <span className="text-base">Flexibility Training</span>
+            </div>
+            <span className="text-base font-medium">65%</span>
           </div>
-          <span className="text-base font-medium">65%</span>
         </div>
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <Weight className="w-6 h-6 text-[#9b87f5]" />
-            <span className="text-base">Weight Training</span>
+        <div className="p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-3">
+              <Weight className="w-6 h-6 text-[#33C3F0]" />
+              <span className="text-base">Weight Training</span>
+            </div>
+            <span className="text-base font-medium">70%</span>
           </div>
-          <span className="text-base font-medium">70%</span>
         </div>
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <Bike className="w-6 h-6 text-[#9b87f5]" />
-            <span className="text-base">Cycling Training</span>
+        <div className="p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-3">
+              <Bike className="w-6 h-6 text-[#33C3F0]" />
+              <span className="text-base">Cycling Training</span>
+            </div>
+            <span className="text-base font-medium">80%</span>
           </div>
-          <span className="text-base font-medium">80%</span>
         </div>
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <Activity className="w-6 h-6 text-[#9b87f5]" />
-            <span className="text-base">Stretching Practice</span>
+        <div className="p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-3">
+              <Activity className="w-6 h-6 text-[#33C3F0]" />
+              <span className="text-base">Stretching Practice</span>
+            </div>
+            <span className="text-base font-medium">60%</span>
           </div>
-          <span className="text-base font-medium">60%</span>
         </div>
       </div>
     </Card>

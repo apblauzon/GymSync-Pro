@@ -20,15 +20,15 @@ export const StatsSection = () => {
   });
 
   return (
-    <Card className="w-[434px] h-[111px] bg-[#FFF9E7] p-4">
+    <Card className="bg-[#FFF9E7] p-4">
       <div className="grid grid-cols-3 gap-4">
         <div>
           <h3 className="text-gray-500 text-sm mb-1">Weight</h3>
-          <div className="text-xl font-semibold">{clientData?.weight} kg</div>
+          <div className="text-xl font-semibold">{clientData?.weight || 75} kg</div>
         </div>
         <div>
           <h3 className="text-gray-500 text-sm mb-1">Height</h3>
-          <div className="text-xl font-semibold">{clientData?.height} cm</div>
+          <div className="text-xl font-semibold">{clientData?.height || 175} cm</div>
         </div>
         <div>
           <h3 className="text-gray-500 text-sm mb-1">Age</h3>

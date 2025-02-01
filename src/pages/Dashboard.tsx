@@ -7,22 +7,23 @@ import { LastSessionSection } from "@/components/dashboard/LastSessionSection";
 import { ActionsSection } from "@/components/dashboard/ActionsSection";
 import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
 import { WalkingTimeCard } from "@/components/dashboard/WalkingTimeCard";
+import { ActivityTracking } from "@/components/dashboard/ActivityTracking";
 
 const Dashboard = () => {
   return (
-    <div className="min-h-[870px] bg-[#F8F7FF] p-10">
+    <div className="min-h-[870px] bg-[#F8F7FF] p-6 lg:p-10">
       <div className="max-w-[1662px] mx-auto grid grid-cols-12 gap-6">
         {/* Left Section */}
-        <div className="col-span-6">
+        <div className="col-span-12 lg:col-span-6">
           {/* Top Section with Progress and Heart Metrics side by side */}
-          <div className="flex gap-6 mb-6">
+          <div className="flex flex-col lg:flex-row gap-6 mb-6">
             {/* Progress Component */}
-            <div className="w-[450px]">
+            <div className="w-full lg:w-[380px]">
               <ProgressSection />
             </div>
             
             {/* Heart Metrics Components */}
-            <div className="w-[320px]">
+            <div className="w-full lg:w-[320px]">
               <HeartMetrics />
             </div>
           </div>
@@ -34,34 +35,32 @@ const Dashboard = () => {
         </div>
 
         {/* Center Section */}
-        <div className="col-span-3 space-y-6">
-          <div className="grid grid-cols-2 gap-4">
+        <div className="col-span-12 lg:col-span-3">
+          <div className="grid grid-cols-2 gap-4 mb-6">
             <StatsGrid />
           </div>
 
           {/* Profile Section */}
-          <div className="w-[463px]">
+          <div className="w-full max-w-[463px] mb-6">
             <ProfileSection />
           </div>
 
           {/* Stats Section */}
-          <div className="w-[434px]">
+          <div className="w-full max-w-[434px] mb-6">
             <StatsSection />
           </div>
 
           {/* Last Session Section */}
-          <div className="w-[434px]">
+          <div className="w-full max-w-[434px]">
             <LastSessionSection />
           </div>
         </div>
 
         {/* Right Section */}
-        <div className="col-span-3">
+        <div className="col-span-12 lg:col-span-3">
           {/* Activity Tracking */}
-          <div className="w-[430px] mb-6">
-            <div className="h-[384px] bg-white rounded-xl p-4">
-              <h2 className="text-lg font-semibold">Activity Tracking</h2>
-            </div>
+          <div className="w-full max-w-[430px] mb-6">
+            <ActivityTracking />
           </div>
 
           {/* Upcoming Events and Actions side by side */}

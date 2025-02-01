@@ -11,7 +11,7 @@ const COLORS = ['#9b87f5', '#E0E0E0'];
 
 export const ProgressSection = () => {
   return (
-    <Card className="h-[400px] p-6">
+    <Card className="h-full p-6">
       <div className="flex justify-between items-center mb-6">
         <h2 className="font-semibold text-lg">Progress</h2>
         <select className="bg-[#F3F0FF] px-3 py-1 rounded-full text-sm">

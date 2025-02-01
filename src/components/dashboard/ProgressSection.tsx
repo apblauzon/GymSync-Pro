@@ -11,20 +11,20 @@ const COLORS = ['#9b87f5', '#E0E0E0'];
 
 export const ProgressSection = () => {
   return (
-    <Card className="h-full p-6">
+    <Card className="h-full p-6 rounded-[25px]">
       <div className="flex justify-between items-center mb-6">
         <h2 className="font-semibold text-lg">Progress</h2>
         <select className="bg-[#F3F0FF] px-3 py-1 rounded-full text-sm">
           <option>This Week</option>
         </select>
       </div>
-      <div className="relative w-56 h-56 mx-auto mb-8">
+      <div className="relative w-64 h-64 mx-auto mb-8">
         <ResponsiveContainer>
           <PieChart>
             <Pie
               data={progressData}
-              innerRadius={55}
-              outerRadius={70}
+              innerRadius={65}
+              outerRadius={80}
               paddingAngle={0}
               dataKey="value"
             >

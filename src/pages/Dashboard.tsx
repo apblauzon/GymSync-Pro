@@ -15,7 +15,7 @@ const Dashboard = () => {
         {/* Left Column - Progress and Heart Metrics */}
         <div className="col-span-5 grid grid-cols-2 gap-4 auto-rows-min">
           {/* Progress Section */}
-          <div className="col-span-1 pb-8">
+          <div className="col-span-1 pb-12">
             <ProgressSection />
           </div>
           
@@ -54,7 +54,7 @@ const Dashboard = () => {
           </div>
           
           {/* Events and Actions */}
-          <div className="flex gap-2 items-start">
+          <div className="flex gap-2 items-start mt-4">
             <UpcomingEvents />
             <ActionsSection />
           </div>

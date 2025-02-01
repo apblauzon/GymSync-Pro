@@ -55,7 +55,22 @@ export default {
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
-        heading: ["Montserrat", "sans-serif"],
+      },
+      fontSize: {
+        // Headings
+        h1: ["68px", { lineHeight: "102px", letterSpacing: "0px", fontWeight: "700" }],
+        h2: ["56px", { lineHeight: "84px", letterSpacing: "0px", fontWeight: "700" }],
+        h3: ["46px", { lineHeight: "69px", letterSpacing: "0px", fontWeight: "700" }],
+        h4: ["38px", { lineHeight: "57px", letterSpacing: "0px", fontWeight: "700" }],
+        h5: ["32px", { lineHeight: "48px", letterSpacing: "0px", fontWeight: "700" }],
+        h6: ["26px", { lineHeight: "39px", letterSpacing: "0px", fontWeight: "700" }],
+        h7: ["22px", { lineHeight: "33px", letterSpacing: "0px", fontWeight: "700" }],
+        // Body text
+        b1: ["18px", { lineHeight: "27px", letterSpacing: "0px", fontWeight: "500" }],
+        b2: ["16px", { lineHeight: "24px", letterSpacing: "0px", fontWeight: "500" }],
+        b3: ["14px", { lineHeight: "21px", letterSpacing: "0px", fontWeight: "500" }],
+        b4: ["12px", { lineHeight: "18px", letterSpacing: "0px", fontWeight: "500" }],
+        b5: ["10px", { lineHeight: "15px", letterSpacing: "0px", fontWeight: "500" }],
       },
       borderRadius: {
         lg: "var(--radius)",

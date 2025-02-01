@@ -9,6 +9,7 @@ import { WalkingTimeCard } from "@/components/dashboard/WalkingTimeCard";
 import { ActivityTracking } from "@/components/dashboard/ActivityTracking";
 import { LastSessionDate } from "@/components/dashboard/LastSessionDate";
 import { AvailableTrainer } from "@/components/dashboard/AvailableTrainer";
+import { WorkoutStreak } from "@/components/dashboard/WorkoutStreak";
 
 const Dashboard = () => {
   return (
@@ -25,9 +26,10 @@ const Dashboard = () => {
           <div className="grid grid-cols-4 gap-4">
             <StatsGrid />
           </div>
-          <div className="grid grid-rows-[auto,1fr,auto] gap-4">
+          <div className="grid grid-rows-[auto,1fr,auto,auto] gap-4">
             <ProfileSection />
             <ActivityTracking />
+            <WorkoutStreak />
             <StatsSection />
           </div>
         </div>

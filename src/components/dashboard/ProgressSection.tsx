@@ -7,13 +7,13 @@ const progressData = [
   { name: 'Remaining', value: 15 },
 ];
 
-const COLORS = ['#9b87f5', '#E0E0E0'];
+const COLORS = ['#9b87f5', '#7E69AB'];
 
 export const ProgressSection = () => {
   return (
-    <Card className="h-full p-6 rounded-[25px]">
+    <Card className="h-full p-8 rounded-[25px]">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="font-semibold text-lg">Progress</h2>
+        <h2 className="font-semibold text-xl">Progress</h2>
         <select className="bg-[#F3F0FF] px-3 py-1 rounded-full text-sm">
           <option>This Week</option>
         </select>
@@ -35,31 +35,31 @@ export const ProgressSection = () => {
           </PieChart>
         </ResponsiveContainer>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-          <div className="text-4xl font-bold">85%</div>
-          <div className="text-sm text-gray-500">Goal</div>
+          <div className="text-5xl font-bold">85%</div>
+          <div className="text-base text-gray-500">Goal</div>
         </div>
       </div>
       <div className="space-y-6">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <Dumbbell className="w-5 h-5 text-[#9b87f5]" />
-            <span className="text-sm">Cardio Training</span>
+            <Dumbbell className="w-6 h-6 text-[#9b87f5]" />
+            <span className="text-base">Cardio Training</span>
           </div>
-          <span className="text-sm font-medium">85%</span>
+          <span className="text-base font-medium">85%</span>
         </div>
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <Activity className="w-5 h-5 text-[#9b87f5]" />
-            <span className="text-sm">Strength Training</span>
+            <Activity className="w-6 h-6 text-[#9b87f5]" />
+            <span className="text-base">Strength Training</span>
           </div>
-          <span className="text-sm font-medium">75%</span>
+          <span className="text-base font-medium">75%</span>
         </div>
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <Timer className="w-5 h-5 text-[#9b87f5]" />
-            <span className="text-sm">Flexibility Training</span>
+            <Timer className="w-6 h-6 text-[#9b87f5]" />
+            <span className="text-base">Flexibility Training</span>
           </div>
-          <span className="text-sm font-medium">65%</span>
+          <span className="text-base font-medium">65%</span>
         </div>
       </div>
     </Card>

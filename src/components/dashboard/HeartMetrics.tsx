@@ -13,6 +13,7 @@ import {
   Filler,
   Legend,
   InteractionMode,
+  InteractionAxis,
 } from 'chart.js';
 
 ChartJS.register(
@@ -103,7 +104,7 @@ export const HeartMetrics = () => {
     },
     interaction: {
       mode: 'nearest' as InteractionMode,
-      axis: 'x',
+      axis: 'x' as InteractionAxis,
       intersect: false
     },
     elements: {

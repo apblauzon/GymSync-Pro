@@ -17,7 +17,7 @@ export const UpcomingEvents = () => {
   });
 
   return (
-    <Card className="w-[302px] h-[311px] bg-[#9b87f5] text-white p-4">
+    <Card className="w-[250px] bg-[#9b87f5] text-white p-4">
       <h2 className="text-lg font-semibold mb-3">Upcoming Events</h2>
       <div className="space-y-3">
         {challenges?.map((challenge) => (

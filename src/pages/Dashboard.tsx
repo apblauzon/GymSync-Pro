@@ -45,26 +45,22 @@ const Dashboard = () => {
         </div>
 
         {/* Right Section */}
-        <div className="lg:col-span-3 space-y-4">
-          <div className="flex flex-col lg:flex-row xl:flex-col gap-4">
+        <div className="lg:col-span-3">
+          <div className="grid grid-cols-1 gap-4">
             {/* Activity Tracking */}
             <div className="w-full">
               <ActivityTracking />
             </div>
 
-            {/* Right Side Components */}
-            <div className="flex flex-col gap-4">
+            {/* Upcoming Events and Actions Container */}
+            <div className="flex flex-col lg:flex-row gap-4">
               <UpcomingEvents />
-              
-              {/* Actions Section with Download, Settings, Logout */}
-              <div className="flex lg:flex-col gap-4">
-                <ActionsSection />
-              </div>
+              <ActionsSection />
+            </div>
 
-              {/* View Gym Trainer Available */}
-              <div className="w-full bg-white rounded-xl p-4 h-[34px] flex items-center justify-center">
-                <span className="text-sm">View Gym Trainer Available</span>
-              </div>
+            {/* View Gym Trainer Available */}
+            <div className="w-full bg-white rounded-xl p-4 h-[34px] flex items-center justify-center">
+              <span className="text-sm">View Gym Trainer Available</span>
             </div>
           </div>
         </div>

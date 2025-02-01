@@ -13,7 +13,7 @@ export const ActivityTracking = () => {
   ];
 
   return (
-    <Card className="bg-white rounded-[25px] p-6 h-full">
+    <Card className="bg-white rounded-[25px] p-6 h-[calc(100%-180px)]">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-lg font-semibold">Activity Tracking</h2>
         <RefreshCw className="w-5 h-5 text-gray-500" />

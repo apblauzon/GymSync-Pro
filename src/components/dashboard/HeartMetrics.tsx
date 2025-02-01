@@ -12,6 +12,7 @@ import {
   Tooltip,
   Filler,
   Legend,
+  InteractionMode,
 } from 'chart.js';
 
 ChartJS.register(
@@ -72,7 +73,7 @@ export const HeartMetrics = () => {
         display: false,
       },
       tooltip: {
-        mode: 'index',
+        mode: 'index' as InteractionMode,
         intersect: false,
         backgroundColor: 'rgba(255, 255, 255, 0.9)',
         titleColor: '#1f2937',
@@ -101,7 +102,7 @@ export const HeartMetrics = () => {
       },
     },
     interaction: {
-      mode: 'nearest',
+      mode: 'nearest' as InteractionMode,
       axis: 'x',
       intersect: false
     },

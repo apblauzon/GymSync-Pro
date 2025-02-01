@@ -1,0 +1,196 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useNavigate } from "react-router-dom";
+
+const Register = () => {
+  const navigate = useNavigate();
+  const [step, setStep] = useState(1);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    birthday: "",
+    gender: "",
+    membershipType: "",
+    weight: "",
+    height: "",
+    goal: "",
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSelectChange = (name: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const nextStep = () => setStep(2);
+  const prevStep = () => setStep(1);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Here we would handle the registration logic
+    // For now, we'll just redirect to login
+    navigate("/login");
+  };
+
+  return (
+    <div className="auth-container">
+      <div className="auth-card">
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Join GymSync Pro</h1>
+          <p className="text-gray-600">Step {step} of 2</p>
+          <div className="progress-bar mt-4">
+            <div className="progress-bar-fill" style={{ width: `${(step / 2) * 100}%` }} />
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {step === 1 ? (
+            <>
+              <div className="form-group">
+                <Label htmlFor="name">Full Name</Label>
+                <Input
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <Label htmlFor="phone">Phone Number</Label>
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <Label htmlFor="birthday">Birthday</Label>
+                <Input
+                  id="birthday"
+                  name="birthday"
+                  type="date"
+                  value={formData.birthday}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+
+              <Button type="button" onClick={nextStep} className="w-full">
+                Next Step
+              </Button>
+            </>
+          ) : (
+            <>
+              <div className="form-group">
+                <Label htmlFor="gender">Gender</Label>
+                <Select name="gender" onValueChange={(value) => handleSelectChange("gender", value)}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select gender" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="male">Male</SelectItem>
+                    <SelectItem value="female">Female</SelectItem>
+                    <SelectItem value="other">Other</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="form-group">
+                <Label htmlFor="membershipType">Membership Type</Label>
+                <Select name="membershipType" onValueChange={(value) => handleSelectChange("membershipType", value)}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select membership" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="basic">Basic</SelectItem>
+                    <SelectItem value="standard">Standard</SelectItem>
+                    <SelectItem value="premium">Premium</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="form-group">
+                <Label htmlFor="weight">Weight (kg)</Label>
+                <Input
+                  id="weight"
+                  name="weight"
+                  type="number"
+                  value={formData.weight}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <Label htmlFor="height">Height (cm)</Label>
+                <Input
+                  id="height"
+                  name="height"
+                  type="number"
+                  value={formData.height}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <Label htmlFor="goal">Fitness Goal</Label>
+                <Input
+                  id="goal"
+                  name="goal"
+                  value={formData.goal}
+                  onChange={handleInputChange}
+                  placeholder="e.g., Weight loss, Muscle gain"
+                  required
+                />
+              </div>
+
+              <div className="flex gap-4">
+                <Button type="button" onClick={prevStep} variant="outline" className="w-full">
+                  Back
+                </Button>
+                <Button type="submit" className="w-full">
+                  Complete Registration
+                </Button>
+              </div>
+            </>
+          )}
+
+          <p className="text-center text-sm text-gray-600 mt-4">
+            Already have an account?{" "}
+            <a href="/login" className="text-primary hover:underline">
+              Login here
+            </a>
+          </p>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default Register;

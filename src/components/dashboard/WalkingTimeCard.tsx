@@ -3,7 +3,7 @@ import { MoreHorizontal } from "lucide-react";
 
 export const WalkingTimeCard = () => {
   return (
-    <Card className="bg-[#F3E6FF] p-6 rounded-[25px] h-[307px]">
+    <Card className="bg-[#F3E6FF] p-6 rounded-[25px] h-[307px] mt-2">
       <div className="flex flex-col h-full">
         <div className="flex justify-between items-center mb-3">
           <h3 className="text-xl font-semibold text-gray-800">Running with Kate</h3>
@@ -25,7 +25,7 @@ export const WalkingTimeCard = () => {
         </div>
         
         <div className="text-center mt-auto">
-          <p className="text-sm text-gray-600 mb-1">Double Walking Time</p>
+          <p className="text-sm text-gray-600 mb-2">Double Walking Time</p>
           <div className="flex items-baseline justify-center gap-2">
             <span className="text-4xl font-bold text-[#9b87f5]">34</span>
             <span className="text-lg text-gray-600">min</span>

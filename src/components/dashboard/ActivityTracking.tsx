@@ -38,9 +38,9 @@ export const ActivityTracking = () => {
       {/* Activity Graph */}
       <div className="relative h-[200px] mt-8">
         <img 
-          src="/lovable-uploads/ed7c025a-1953-43e3-b0a1-8c38efb20781.png" 
+          src="/lovable-uploads/c974cd7e-4430-4775-ab53-9c2d25ce4933.png" 
           alt="Activity graph" 
-          className="w-full h-full object-cover rounded-lg"
+          className="w-full h-full object-contain rounded-lg"
         />
       </div>
     </Card>

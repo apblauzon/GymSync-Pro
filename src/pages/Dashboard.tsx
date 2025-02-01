@@ -1,5 +1,6 @@
 import { ProgressSection } from "@/components/dashboard/ProgressSection";
 import { WalkingTimeCard } from "@/components/dashboard/WalkingTimeCard";
+import { HeartMetrics } from "@/components/dashboard/HeartMetrics";
 import { HeartBeatSection } from "@/components/dashboard/HeartBeatSection";
 import { StatsGrid } from "@/components/dashboard/StatsGrid";
 import { ProfileSection } from "@/components/dashboard/ProfileSection";
@@ -20,8 +21,13 @@ const Dashboard = () => {
           <WalkingTimeCard />
         </div>
 
+        {/* Heart Metrics Column */}
+        <div className="col-span-12 lg:col-span-3 h-full">
+          <HeartMetrics />
+        </div>
+
         {/* Middle Column */}
-        <div className="col-span-12 lg:col-span-6 grid grid-cols-12 gap-3 sm:gap-4 h-full">
+        <div className="col-span-12 lg:col-span-3 grid grid-cols-12 gap-3 sm:gap-4 h-full">
           <HeartBeatSection />
           <StatsGrid />
           <ProfileSection />

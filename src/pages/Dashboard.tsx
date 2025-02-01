@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 import { ProgressSection } from "@/components/dashboard/ProgressSection";
 import { HeartMetrics } from "@/components/dashboard/HeartMetrics";
 import { StatsGrid } from "@/components/dashboard/StatsGrid";
@@ -12,6 +15,30 @@ import { AvailableTrainer } from "@/components/dashboard/AvailableTrainer";
 import { WorkoutStreak } from "@/components/dashboard/WorkoutStreak";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        navigate('/login');
+      }
+    };
+
+    checkSession();
+
+    // Set up auth state listener
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_OUT' || !session) {
+        navigate('/login');
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [navigate]);
+
   return (
     <div className="min-h-screen bg-[#F8F7FF] p-4 lg:p-6">
       <div className="grid grid-cols-12 gap-4 h-screen max-h-[900px]">

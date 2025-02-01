@@ -23,16 +23,15 @@ const Dashboard = () => {
           <div className="w-[320px]">
             <HeartMetrics />
           </div>
+
+          {/* Running with Kate Component */}
+          <div className="w-[320px]">
+            <WalkingTimeCard />
+          </div>
         </div>
 
         {/* Center Section */}
         <div className="col-span-6 space-y-6">
-          {/* Walking Time Card */}
-          <div className="w-[650px]">
-            <WalkingTimeCard />
-          </div>
-          
-          {/* Stats Grid */}
           <div className="grid grid-cols-4 gap-4">
             <StatsGrid />
           </div>

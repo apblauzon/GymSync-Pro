@@ -18,13 +18,13 @@ export const ProgressSection = () => {
           <option>This Week</option>
         </select>
       </div>
-      <div className="relative w-48 h-48 mx-auto mb-6">
+      <div className="relative w-56 h-56 mx-auto mb-8">
         <ResponsiveContainer>
           <PieChart>
             <Pie
               data={progressData}
-              innerRadius={45}
-              outerRadius={60}
+              innerRadius={55}
+              outerRadius={70}
               paddingAngle={0}
               dataKey="value"
             >

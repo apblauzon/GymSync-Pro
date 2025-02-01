@@ -13,19 +13,22 @@ const Dashboard = () => {
     <div className="min-h-[870px] bg-[#F8F7FF] p-10">
       <div className="max-w-[1662px] mx-auto grid grid-cols-12 gap-6">
         {/* Left Section */}
-        <div className="col-span-3 space-y-6">
-          {/* Progress Component */}
-          <div className="w-[300px]">
-            <ProgressSection />
-          </div>
-          
-          {/* Heart Metrics Components */}
-          <div className="w-[320px]">
-            <HeartMetrics />
+        <div className="col-span-3">
+          {/* Top Section with Progress and Heart Metrics side by side */}
+          <div className="flex gap-6 mb-6">
+            {/* Progress Component */}
+            <div className="w-[300px]">
+              <ProgressSection />
+            </div>
+            
+            {/* Heart Metrics Components */}
+            <div className="w-[320px]">
+              <HeartMetrics />
+            </div>
           </div>
 
-          {/* Running with Kate Component */}
-          <div className="w-[320px]">
+          {/* Running with Kate Component at the bottom */}
+          <div className="w-full">
             <WalkingTimeCard />
           </div>
         </div>

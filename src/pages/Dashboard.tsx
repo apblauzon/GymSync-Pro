@@ -10,16 +10,18 @@ import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
 
 const Dashboard = () => {
   return (
-    <div className="h-screen bg-[#F8F7FF] p-6">
+    <div className="h-screen bg-[#F8F7FF] p-6 overflow-hidden">
       <div className="max-w-[1800px] mx-auto grid grid-cols-12 gap-4 h-full">
         {/* Left Column */}
-        <div className="col-span-3">
-          <ProgressSection />
+        <div className="col-span-3 flex flex-col h-full">
+          <div className="flex-grow">
+            <ProgressSection />
+          </div>
           <WalkingTimeCard />
         </div>
 
         {/* Middle Column */}
-        <div className="col-span-9 grid grid-cols-12 gap-4">
+        <div className="col-span-6 grid grid-cols-12 gap-4 h-full">
           <HeartBeatSection />
           <StatsGrid />
           <ProfileSection />
@@ -28,8 +30,10 @@ const Dashboard = () => {
         </div>
 
         {/* Right Column */}
-        <div className="col-span-3 space-y-4">
-          <UpcomingEvents />
+        <div className="col-span-3 flex flex-col gap-4 h-full">
+          <div className="flex-grow">
+            <UpcomingEvents />
+          </div>
           <ActionsSection />
         </div>
       </div>

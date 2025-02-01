@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { MoreHorizontal, User, Trophy, Activity } from "lucide-react";
+import { MoreHorizontal, Trophy, Activity } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -21,14 +21,18 @@ export const ProfileSection = () => {
   });
 
   return (
-    <Card className="col-span-6 bg-[#9b87f5] text-white p-4">
+    <Card className="col-span-6 bg-[#9b87f5] text-white p-4 h-full">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-semibold">My Profile</h2>
         <MoreHorizontal />
       </div>
       <div className="flex items-center gap-4">
-        <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-          <User size={24} className="text-[#9b87f5]" />
+        <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center overflow-hidden">
+          <img 
+            src="/lovable-uploads/49fec05a-cd8e-4715-b93f-7582ead9e45d.png" 
+            alt="Profile" 
+            className="w-full h-full object-cover"
+          />
         </div>
         <div>
           <h3 className="text-xl font-semibold mb-1">{clientData?.name}</h3>

@@ -1,5 +1,4 @@
 import { Card } from "@/components/ui/card";
-import { Footprints } from "lucide-react";
 
 export const WalkingTimeCard = () => {
   return (
@@ -14,11 +13,11 @@ export const WalkingTimeCard = () => {
         9 Jan, 2025
       </div>
       <div className="flex justify-center mb-4">
-        <div className="relative">
-          <Footprints className="w-8 h-8 text-[#9b87f5] absolute -left-8" />
-          <Footprints className="w-8 h-8 text-[#9b87f5] absolute -right-8 transform scale-x-[-1]" />
-          <div className="border-t-2 border-[#9b87f5] w-16"></div>
-        </div>
+        <img 
+          src="/lovable-uploads/a1291dad-e2fc-4c85-8531-662cfae4b8bc.png" 
+          alt="Running shoes" 
+          className="h-8 w-auto"
+        />
       </div>
       <div className="text-center">
         <div className="text-sm text-gray-600">Double Walking Time</div>

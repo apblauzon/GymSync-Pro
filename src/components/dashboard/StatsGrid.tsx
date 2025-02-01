@@ -1,28 +1,31 @@
 import { Card } from "@/components/ui/card";
-import { Timer, Route, Flame, Activity } from "lucide-react";
+import { Timer, Route, Zap, Loader } from "lucide-react";
 
 export const StatsGrid = () => {
   return (
     <div className="col-span-6 grid grid-cols-2 gap-4">
-      <Card className="bg-[#FF9F7B] text-white p-4">
-        <Timer className="w-5 h-5 mb-2" />
-        <h3 className="text-sm mb-1">Time</h3>
-        <div className="text-2xl font-bold">56m</div>
+      <Card className="bg-[#FEC6A1] p-6 flex flex-col items-center justify-center">
+        <Timer className="w-6 h-6 mb-3 text-gray-800" />
+        <h3 className="text-gray-800 text-sm font-medium mb-2">Time</h3>
+        <div className="text-2xl font-bold text-gray-800">56m</div>
       </Card>
-      <Card className="bg-[#F3F0FF] p-4">
-        <Route className="w-5 h-5 mb-2" />
-        <h3 className="text-sm mb-1">Total distance</h3>
-        <div className="text-2xl font-bold">5km</div>
+      
+      <Card className="bg-[#E5DEFF] p-6 flex flex-col items-center justify-center">
+        <Route className="w-6 h-6 mb-3 text-gray-800" />
+        <h3 className="text-gray-800 text-sm font-medium mb-2">Total distance</h3>
+        <div className="text-2xl font-bold text-gray-800">5km</div>
       </Card>
-      <Card className="bg-[#FFE7F9] p-4">
-        <Flame className="w-5 h-5 mb-2" />
-        <h3 className="text-sm mb-1">Energy burn</h3>
-        <div className="text-2xl font-bold">1345 kal</div>
+      
+      <Card className="bg-[#FFDEE2] p-6 flex flex-col items-center justify-center">
+        <Zap className="w-6 h-6 mb-3 text-gray-800" />
+        <h3 className="text-gray-800 text-sm font-medium mb-2">Energy burn</h3>
+        <div className="text-2xl font-bold text-gray-800">1345 kal</div>
       </Card>
-      <Card className="bg-[#E7F9FF] p-4">
-        <Activity className="w-5 h-5 mb-2" />
-        <h3 className="text-sm mb-1">Symmetry</h3>
-        <div className="text-2xl font-bold">95%</div>
+      
+      <Card className="bg-[#D3E4FD] p-6 flex flex-col items-center justify-center">
+        <Loader className="w-6 h-6 mb-3 text-gray-800" />
+        <h3 className="text-gray-800 text-sm font-medium mb-2">Symmetry</h3>
+        <div className="text-2xl font-bold text-gray-800">95%</div>
       </Card>
     </div>
   );

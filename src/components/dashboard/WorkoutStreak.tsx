@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Trophy, Flame, Calendar } from "lucide-react";
+import { Trophy, Flame, Target } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -30,18 +30,15 @@ export const WorkoutStreak = () => {
   });
 
   const streakCount = workoutData?.length || 0;
-  const lastWorkout = workoutData?.[0]?.start_time 
-    ? new Date(workoutData[0].start_time).toLocaleDateString()
-    : 'No workouts yet';
+  const goalProgress = Math.min(Math.round((streakCount / 30) * 100), 100);
 
   return (
-    <Card className="bg-gradient-to-br from-[#4F46E5] to-[#06B6D4] text-white p-6 rounded-[25px] mb-4">
+    <Card className="bg-gradient-to-br from-[#4F46E5] to-[#06B6D4] text-white p-6 rounded-[25px]">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <Trophy className="w-6 h-6" />
           <h3 className="text-xl font-semibold">Workout Streak</h3>
         </div>
-        <Calendar className="w-5 h-5 opacity-80" />
       </div>
       
       <div className="grid grid-cols-2 gap-4">
@@ -55,10 +52,10 @@ export const WorkoutStreak = () => {
         
         <div className="bg-white/10 rounded-2xl p-4">
           <div className="flex items-center gap-2 mb-2">
-            <Calendar className="w-5 h-5 text-blue-300" />
-            <span className="text-sm opacity-80">Last Workout</span>
+            <Target className="w-5 h-5 text-green-300" />
+            <span className="text-sm opacity-80">Monthly Goal</span>
           </div>
-          <div className="text-lg font-medium">{lastWorkout}</div>
+          <div className="text-lg font-medium">{goalProgress}% Complete</div>
         </div>
       </div>
     </Card>

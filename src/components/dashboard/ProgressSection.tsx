@@ -1,4 +1,4 @@
-import { Activity, Dumbbell, Timer, Weight, Bike, Yoga } from "lucide-react";
+import { Activity, Dumbbell, Timer, Weight, Bike } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { PieChart, Pie, ResponsiveContainer, Cell } from "recharts";
 
@@ -77,8 +77,8 @@ export const ProgressSection = () => {
         </div>
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <Yoga className="w-6 h-6 text-[#9b87f5]" />
-            <span className="text-base">Yoga Practice</span>
+            <Activity className="w-6 h-6 text-[#9b87f5]" />
+            <span className="text-base">Stretching Practice</span>
           </div>
           <span className="text-base font-medium">60%</span>
         </div>

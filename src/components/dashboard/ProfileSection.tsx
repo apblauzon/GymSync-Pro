@@ -21,7 +21,7 @@ export const ProfileSection = () => {
   });
 
   return (
-    <Card className="bg-[#9b87f5] text-white p-4">
+    <Card className="bg-[#9b87f5] text-white p-4 h-[120px]">
       <div className="flex justify-between items-center mb-3">
         <h2 className="text-base sm:text-lg font-semibold">My Profile</h2>
         <MoreHorizontal className="w-5 h-5" />

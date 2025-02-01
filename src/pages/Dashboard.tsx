@@ -14,7 +14,7 @@ const Dashboard = () => {
     <div className="min-h-screen bg-[#F8F7FF] p-4 lg:p-6">
       <div className="max-w-[1662px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 lg:gap-6">
         {/* Left Section */}
-        <div className="lg:col-span-5 space-y-4">
+        <div className="lg:col-span-5 grid grid-cols-1 gap-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Progress Component */}
             <div className="w-full">
@@ -28,7 +28,7 @@ const Dashboard = () => {
           </div>
 
           {/* Walking Time Card */}
-          <div className="w-full">
+          <div className="w-full mt-auto">
             <WalkingTimeCard />
           </div>
         </div>
@@ -48,9 +48,9 @@ const Dashboard = () => {
 
         {/* Right Section */}
         <div className="lg:col-span-3">
-          <div className="flex flex-col gap-4">
+          <div className="h-full flex flex-col gap-4">
             {/* Activity Tracking */}
-            <div className="w-full">
+            <div className="w-full flex-grow">
               <ActivityTracking />
             </div>
 

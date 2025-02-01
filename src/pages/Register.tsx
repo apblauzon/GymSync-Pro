@@ -37,12 +37,35 @@ const Register = () => {
   const nextStep = () => setStep(2);
   const prevStep = () => setStep(1);
 
+  const createClientProfile = async (userId: string) => {
+    const { error } = await supabase.from('clients').insert({
+      user_id: userId,
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      birthday: formData.birthday ? new Date(formData.birthday).toISOString() : null,
+      gender: formData.gender,
+      membership_type: formData.membershipType,
+      join_date: new Date().toISOString(),
+      usage_hours: 0,
+      last_visit: null,
+      smart_watch_rented: false,
+      weight: formData.weight ? parseFloat(formData.weight) : null,
+      height: formData.height ? parseFloat(formData.height) : null,
+    });
+
+    if (error) {
+      console.error('Error creating client profile:', error);
+      throw error;
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
     try {
-      const { data, error } = await supabase.auth.signUp({
+      const { data: authData, error: authError } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
         options: {
@@ -52,13 +75,18 @@ const Register = () => {
         },
       });
 
-      if (error) {
+      if (authError) {
         toast({
           variant: "destructive",
           title: "Registration failed",
-          description: error.message,
+          description: authError.message,
         });
-      } else {
+        return;
+      }
+
+      if (authData.user) {
+        await createClientProfile(authData.user.id);
+        
         toast({
           title: "Registration successful!",
           description: "Please check your email to verify your account.",
@@ -204,18 +232,6 @@ const Register = () => {
                   type="number"
                   value={formData.height}
                   onChange={handleInputChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <Label htmlFor="goal">Fitness Goal</Label>
-                <Input
-                  id="goal"
-                  name="goal"
-                  value={formData.goal}
-                  onChange={handleInputChange}
-                  placeholder="e.g., Weight loss, Muscle gain"
                   required
                 />
               </div>

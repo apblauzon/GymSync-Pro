@@ -56,26 +56,31 @@ const Dashboard = () => {
         </div>
 
         {/* Right Section */}
-        <div className="col-span-3 space-y-6">
+        <div className="col-span-3">
           {/* Activity Tracking */}
-          <div className="w-[430px]">
+          <div className="w-[430px] mb-6">
             <div className="h-[384px] bg-white rounded-xl p-4">
               <h2 className="text-lg font-semibold">Activity Tracking</h2>
             </div>
           </div>
 
-          {/* Upcoming Events */}
-          <div className="w-[302px]">
-            <UpcomingEvents />
-          </div>
+          {/* Upcoming Events and Actions side by side */}
+          <div className="flex gap-4">
+            <div className="space-y-4">
+              {/* Upcoming Events */}
+              <div className="w-[302px]">
+                <UpcomingEvents />
+              </div>
 
-          {/* View Gym Trainer Available */}
-          <div className="w-[302px] bg-white rounded-xl p-4 h-[34px] flex items-center">
-            <span className="text-sm">View Gym Trainer Available</span>
-          </div>
+              {/* View Gym Trainer Available */}
+              <div className="w-[302px] bg-white rounded-xl p-4 h-[34px] flex items-center">
+                <span className="text-sm">View Gym Trainer Available</span>
+              </div>
+            </div>
 
-          {/* Action Buttons */}
-          <ActionsSection />
+            {/* Action Buttons */}
+            <ActionsSection />
+          </div>
         </div>
       </div>
     </div>

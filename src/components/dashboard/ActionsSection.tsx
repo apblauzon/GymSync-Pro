@@ -12,7 +12,7 @@ export const ActionsSection = () => {
   };
 
   return (
-    <div className="flex gap-4">
+    <div className="flex flex-col gap-4">
       <button className="w-[91px] h-[93px] flex flex-col items-center justify-center gap-2 bg-[#FF6B6B] text-white rounded-xl">
         <Download className="w-6 h-6" />
         <span className="text-xs">Download</span>

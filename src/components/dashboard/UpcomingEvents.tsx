@@ -17,9 +17,9 @@ export const UpcomingEvents = () => {
   });
 
   return (
-    <Card className="flex-1 bg-[#9b87f5] text-white p-6 rounded-[25px] h-full overflow-hidden">
-      <h2 className="text-lg font-semibold mb-4">Upcoming Events</h2>
-      <div className="space-y-3 h-[calc(100%-3rem)] overflow-auto pr-2">
+    <Card className="bg-[#9b87f5] text-white p-6 rounded-[25px] h-full">
+      <h2 className="text-lg font-semibold mb-6">Upcoming Events</h2>
+      <div className="space-y-4 h-[calc(100%-3rem)] overflow-auto">
         {challenges?.map((challenge) => (
           <div key={challenge.challenge_id} className="flex items-center gap-4 bg-white/10 p-4 rounded-2xl">
             <div className="bg-[#8B5CF6] p-3 rounded-xl text-center min-w-[60px]">

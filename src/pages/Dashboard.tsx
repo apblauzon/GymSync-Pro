@@ -11,50 +11,32 @@ import { ActivityTracking } from "@/components/dashboard/ActivityTracking";
 const Dashboard = () => {
   return (
     <div className="min-h-screen bg-[#F8F7FF] p-4 lg:p-6">
-      <div className="h-[calc(100vh-3rem)] max-w-[1662px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 overflow-hidden">
-        {/* Left Column - Progress and Heart Metrics */}
-        <div className="lg:col-span-5 grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
-          {/* Progress Section */}
-          <div className="h-full">
-            <ProgressSection />
-          </div>
-          
-          {/* Heart Metrics */}
-          <div className="h-full flex flex-col gap-4">
-            <HeartMetrics />
-          </div>
+      <div className="grid grid-cols-12 gap-4 h-screen max-h-[900px]">
+        {/* Left Column */}
+        <div className="col-span-12 lg:col-span-3 grid grid-rows-[1fr,1fr] gap-4">
+          <ProgressSection />
+          <HeartMetrics />
         </div>
 
-        {/* Middle Column - Stats and Profile */}
-        <div className="lg:col-span-4 grid grid-cols-1 gap-4 h-full">
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-4">
+        {/* Middle Column */}
+        <div className="col-span-12 lg:col-span-6 grid grid-rows-[auto,1fr] gap-4">
+          <div className="grid grid-cols-4 gap-4">
             <StatsGrid />
           </div>
-          
-          {/* Profile Section */}
-          <div className="h-auto">
+          <div className="grid grid-rows-[auto,1fr,auto] gap-4">
             <ProfileSection />
-          </div>
-          
-          {/* Stats Section */}
-          <div className="h-auto mt-auto">
+            <ActivityTracking />
             <StatsSection />
           </div>
         </div>
 
         {/* Right Column */}
-        <div className="lg:col-span-3 grid grid-cols-1 gap-4 h-full">
-          {/* Activity Tracking */}
-          <div className="h-[55%]">
-            <ActivityTracking />
-          </div>
-          
-          {/* Events and Actions */}
-          <div className="h-[45%] flex gap-4">
+        <div className="col-span-12 lg:col-span-3 grid grid-rows-[1fr,auto] gap-4">
+          <div className="grid grid-rows-[1fr,1fr] gap-4">
+            <WalkingTimeCard />
             <UpcomingEvents />
-            <ActionsSection />
           </div>
+          <ActionsSection />
         </div>
       </div>
     </div>

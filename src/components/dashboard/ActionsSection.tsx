@@ -12,20 +12,20 @@ export const ActionsSection = () => {
   };
 
   return (
-    <div className="flex flex-col gap-6 ml-auto">
-      <button className="w-[85px] h-[85px] flex flex-col items-center justify-center gap-2 bg-[#FF6B6B] text-white rounded-[25px] hover:opacity-90 transition-opacity shadow-md">
-        <Download className="w-7 h-7" />
+    <div className="flex justify-end gap-6">
+      <button className="w-[100px] h-[100px] flex flex-col items-center justify-center gap-3 bg-[#FF6B6B] text-white rounded-[25px] hover:opacity-90 transition-opacity shadow-md">
+        <Download className="w-8 h-8" />
         <span className="text-sm font-medium">Download</span>
       </button>
-      <button className="w-[85px] h-[85px] flex flex-col items-center justify-center gap-2 bg-[#9b87f5] text-white rounded-[25px] hover:opacity-90 transition-opacity shadow-md">
-        <Settings className="w-7 h-7" />
+      <button className="w-[100px] h-[100px] flex flex-col items-center justify-center gap-3 bg-[#9b87f5] text-white rounded-[25px] hover:opacity-90 transition-opacity shadow-md">
+        <Settings className="w-8 h-8" />
         <span className="text-sm font-medium">Settings</span>
       </button>
       <button 
         onClick={handleLogout}
-        className="w-[85px] h-[85px] flex flex-col items-center justify-center gap-2 bg-[#9747FF] text-white rounded-[25px] hover:opacity-90 transition-opacity shadow-md"
+        className="w-[100px] h-[100px] flex flex-col items-center justify-center gap-3 bg-[#9747FF] text-white rounded-[25px] hover:opacity-90 transition-opacity shadow-md"
       >
-        <LogOut className="w-7 h-7" />
+        <LogOut className="w-8 h-8" />
         <span className="text-sm font-medium">Logout</span>
       </button>
     </div>

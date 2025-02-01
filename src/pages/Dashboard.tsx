@@ -22,16 +22,14 @@ const Dashboard = () => {
         </div>
 
         {/* Middle Column */}
-        <div className="col-span-12 lg:col-span-6 grid grid-rows-[auto,1fr,auto] gap-4">
+        <div className="col-span-12 lg:col-span-6 space-y-4">
           <div className="grid grid-cols-4 gap-4">
             <StatsGrid />
           </div>
-          <div className="grid grid-rows-[auto,1fr,auto,auto] gap-4">
-            <ProfileSection />
-            <ActivityTracking />
-            <WorkoutStreak />
-            <StatsSection />
-          </div>
+          <ProfileSection />
+          <ActivityTracking />
+          <WorkoutStreak />
+          <StatsSection />
         </div>
 
         {/* Right Column */}

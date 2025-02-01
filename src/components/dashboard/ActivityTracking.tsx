@@ -1,5 +1,28 @@
 import { Card } from "@/components/ui/card";
 import { RefreshCw } from "lucide-react";
+import { Line } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler
+} from 'chart.js';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler
+);
 
 export const ActivityTracking = () => {
   const days = [
@@ -12,8 +35,52 @@ export const ActivityTracking = () => {
     { day: 'Sat', date: '24' },
   ];
 
+  const chartData = {
+    labels: days.map(d => d.day),
+    datasets: [
+      {
+        label: 'Activity',
+        data: [65, 78, 82, 75, 85, 80, 77],
+        fill: true,
+        borderColor: '#FF6B6B',
+        backgroundColor: 'rgba(255, 107, 107, 0.1)',
+        tension: 0.4,
+        pointBackgroundColor: '#FF6B6B',
+        pointBorderColor: '#FFF',
+        pointBorderWidth: 2,
+        pointRadius: 4,
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        grid: {
+          color: 'rgba(0, 0, 0, 0.05)',
+        },
+        ticks: {
+          callback: (value: number) => value + '%',
+        },
+      },
+      x: {
+        grid: {
+          display: false,
+        },
+      },
+    },
+  };
+
   return (
-    <Card className="bg-white rounded-[25px] p-6 h-[calc(100%-180px)]">
+    <Card className="bg-white rounded-[25px] p-6 h-full">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-lg font-semibold">Activity Tracking</h2>
         <RefreshCw className="w-5 h-5 text-gray-500" />
@@ -35,13 +102,9 @@ export const ActivityTracking = () => {
         ))}
       </div>
 
-      {/* Activity Graph */}
-      <div className="relative h-[calc(100%-12rem)] mt-4">
-        <img 
-          src="/lovable-uploads/c974cd7e-4430-4775-ab53-9c2d25ce4933.png" 
-          alt="Activity graph" 
-          className="w-full h-full object-contain rounded-lg"
-        />
+      {/* Activity Chart */}
+      <div className="h-[300px] mt-4">
+        <Line data={chartData} options={options} />
       </div>
     </Card>
   );

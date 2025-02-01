@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Timer, Route, Zap, Loader } from "lucide-react";
+import { Timer, Route, Zap, Activity } from "lucide-react";
 
 export const StatsGrid = () => {
   return (
@@ -23,7 +23,7 @@ export const StatsGrid = () => {
       </Card>
       
       <Card className="w-[200px] h-[140px] bg-[#D3E4FD] p-4 flex flex-col items-center justify-center">
-        <Loader className="w-6 h-6 mb-2 text-gray-800" />
+        <Activity className="w-6 h-6 mb-2 text-gray-800" />
         <h3 className="text-gray-800 text-sm font-medium mb-1">Symmetry</h3>
         <div className="text-2xl font-bold text-gray-800">95%</div>
       </Card>

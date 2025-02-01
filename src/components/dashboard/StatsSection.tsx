@@ -40,61 +40,63 @@ export const StatsSection = () => {
   const bmi = Number(calculateBMI());
 
   return (
-    <Card className="bg-[#FFF9E7] p-6 rounded-[25px]">
-      <h2 className="text-xl font-semibold mb-6 text-gray-800">Health Metrics</h2>
+    <Card className="bg-gradient-to-br from-[#9b87f5]/10 to-[#D946EF]/5 p-8 rounded-[25px] backdrop-blur-sm">
+      <h2 className="text-2xl font-bold mb-8 text-gray-800 bg-gradient-to-r from-[#9b87f5] to-[#D946EF] bg-clip-text text-transparent">
+        Health Metrics
+      </h2>
       <div className="grid grid-cols-3 gap-6">
-        <div className="flex flex-col items-center bg-white rounded-2xl p-4 shadow-sm">
-          <Scale className="w-8 h-8 text-primary mb-2" />
-          <h3 className="text-gray-500 text-sm font-semibold mb-1">Weight</h3>
-          <div className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+        <div className="flex flex-col items-center bg-white rounded-2xl p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-gradient-to-br hover:from-white hover:to-[#E5DEFF]">
+          <Scale className="w-10 h-10 text-[#9b87f5] mb-3" />
+          <h3 className="text-gray-600 text-base font-semibold mb-2">Weight</h3>
+          <div className="text-3xl font-bold bg-gradient-to-r from-[#9b87f5] to-[#D946EF] bg-clip-text text-transparent">
             {clientData?.weight || 75} kg
           </div>
-          <p className="text-xs text-gray-500 mt-1">Target: 70 kg</p>
+          <p className="text-sm text-gray-500 mt-2">Target: 70 kg</p>
         </div>
 
-        <div className="flex flex-col items-center bg-white rounded-2xl p-4 shadow-sm">
-          <Ruler className="w-8 h-8 text-primary mb-2" />
-          <h3 className="text-gray-500 text-sm font-semibold mb-1">Height</h3>
-          <div className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+        <div className="flex flex-col items-center bg-white rounded-2xl p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-gradient-to-br hover:from-white hover:to-[#E5DEFF]">
+          <Ruler className="w-10 h-10 text-[#9b87f5] mb-3" />
+          <h3 className="text-gray-600 text-base font-semibold mb-2">Height</h3>
+          <div className="text-3xl font-bold bg-gradient-to-r from-[#9b87f5] to-[#D946EF] bg-clip-text text-transparent">
             {clientData?.height || 175} cm
           </div>
-          <p className="text-xs text-gray-500 mt-1">Adult Average</p>
+          <p className="text-sm text-gray-500 mt-2">Adult Average</p>
         </div>
 
-        <div className="flex flex-col items-center bg-white rounded-2xl p-4 shadow-sm">
-          <CalendarDays className="w-8 h-8 text-primary mb-2" />
-          <h3 className="text-gray-500 text-sm font-semibold mb-1">Age</h3>
-          <div className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+        <div className="flex flex-col items-center bg-white rounded-2xl p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-gradient-to-br hover:from-white hover:to-[#E5DEFF]">
+          <CalendarDays className="w-10 h-10 text-[#9b87f5] mb-3" />
+          <h3 className="text-gray-600 text-base font-semibold mb-2">Age</h3>
+          <div className="text-3xl font-bold bg-gradient-to-r from-[#9b87f5] to-[#D946EF] bg-clip-text text-transparent">
             30 yrs
           </div>
-          <p className="text-xs text-gray-500 mt-1">Birth: 1994</p>
+          <p className="text-sm text-gray-500 mt-2">Birth: 1994</p>
         </div>
 
-        <div className="flex flex-col items-center bg-white rounded-2xl p-4 shadow-sm">
-          <Activity className="w-8 h-8 text-primary mb-2" />
-          <h3 className="text-gray-500 text-sm font-semibold mb-1">BMI</h3>
-          <div className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+        <div className="flex flex-col items-center bg-white rounded-2xl p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-gradient-to-br hover:from-white hover:to-[#E5DEFF]">
+          <Activity className="w-10 h-10 text-[#9b87f5] mb-3" />
+          <h3 className="text-gray-600 text-base font-semibold mb-2">BMI</h3>
+          <div className="text-3xl font-bold bg-gradient-to-r from-[#9b87f5] to-[#D946EF] bg-clip-text text-transparent">
             {calculateBMI()}
           </div>
-          <p className="text-xs text-gray-500 mt-1">{bmi !== null ? getBMICategory(bmi) : "N/A"}</p>
+          <p className="text-sm text-gray-500 mt-2">{bmi !== null ? getBMICategory(bmi) : "N/A"}</p>
         </div>
 
-        <div className="flex flex-col items-center bg-white rounded-2xl p-4 shadow-sm">
-          <Heart className="w-8 h-8 text-primary mb-2" />
-          <h3 className="text-gray-500 text-sm font-semibold mb-1">Resting HR</h3>
-          <div className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+        <div className="flex flex-col items-center bg-white rounded-2xl p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-gradient-to-br hover:from-white hover:to-[#E5DEFF]">
+          <Heart className="w-10 h-10 text-[#9b87f5] mb-3" />
+          <h3 className="text-gray-600 text-base font-semibold mb-2">Resting HR</h3>
+          <div className="text-3xl font-bold bg-gradient-to-r from-[#9b87f5] to-[#D946EF] bg-clip-text text-transparent">
             72 bpm
           </div>
-          <p className="text-xs text-gray-500 mt-1">Normal Range</p>
+          <p className="text-sm text-gray-500 mt-2">Normal Range</p>
         </div>
 
-        <div className="flex flex-col items-center bg-white rounded-2xl p-4 shadow-sm">
-          <Target className="w-8 h-8 text-primary mb-2" />
-          <h3 className="text-gray-500 text-sm font-semibold mb-1">Daily Goal</h3>
-          <div className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+        <div className="flex flex-col items-center bg-white rounded-2xl p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-gradient-to-br hover:from-white hover:to-[#E5DEFF]">
+          <Target className="w-10 h-10 text-[#9b87f5] mb-3" />
+          <h3 className="text-gray-600 text-base font-semibold mb-2">Daily Goal</h3>
+          <div className="text-3xl font-bold bg-gradient-to-r from-[#9b87f5] to-[#D946EF] bg-clip-text text-transparent">
             85%
           </div>
-          <p className="text-xs text-gray-500 mt-1">Progress</p>
+          <p className="text-sm text-gray-500 mt-2">Progress</p>
         </div>
       </div>
     </Card>

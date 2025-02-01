@@ -12,21 +12,21 @@ export const ActionsSection = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 ml-auto">
-      <button className="w-[75px] h-[75px] flex flex-col items-center justify-center gap-2 bg-[#FF6B6B] text-white rounded-[25px] hover:opacity-90 transition-opacity shadow-md">
-        <Download className="w-6 h-6" />
-        <span className="text-[11px] font-medium">Download</span>
+    <div className="flex flex-col gap-6 ml-auto">
+      <button className="w-[85px] h-[85px] flex flex-col items-center justify-center gap-2 bg-[#FF6B6B] text-white rounded-[25px] hover:opacity-90 transition-opacity shadow-md">
+        <Download className="w-7 h-7" />
+        <span className="text-sm font-medium">Download</span>
       </button>
-      <button className="w-[75px] h-[75px] flex flex-col items-center justify-center gap-2 bg-[#9b87f5] text-white rounded-[25px] hover:opacity-90 transition-opacity shadow-md">
-        <Settings className="w-6 h-6" />
-        <span className="text-[11px] font-medium">Settings</span>
+      <button className="w-[85px] h-[85px] flex flex-col items-center justify-center gap-2 bg-[#9b87f5] text-white rounded-[25px] hover:opacity-90 transition-opacity shadow-md">
+        <Settings className="w-7 h-7" />
+        <span className="text-sm font-medium">Settings</span>
       </button>
       <button 
         onClick={handleLogout}
-        className="w-[75px] h-[75px] flex flex-col items-center justify-center gap-2 bg-[#9747FF] text-white rounded-[25px] hover:opacity-90 transition-opacity shadow-md"
+        className="w-[85px] h-[85px] flex flex-col items-center justify-center gap-2 bg-[#9747FF] text-white rounded-[25px] hover:opacity-90 transition-opacity shadow-md"
       >
-        <LogOut className="w-6 h-6" />
-        <span className="text-[11px] font-medium">Logout</span>
+        <LogOut className="w-7 h-7" />
+        <span className="text-sm font-medium">Logout</span>
       </button>
     </div>
   );

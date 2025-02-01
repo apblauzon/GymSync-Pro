@@ -20,19 +20,19 @@ export const StatsSection = () => {
   });
 
   return (
-    <Card className="bg-[#FFF9E7] p-6 h-[120px] rounded-[25px]">
+    <Card className="bg-[#FFF9E7] p-6 rounded-[25px]">
       <div className="grid grid-cols-3 gap-6">
         <div>
-          <h3 className="text-gray-500 text-sm font-medium mb-2">Weight</h3>
-          <div className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{clientData?.weight || 75} kg</div>
+          <h3 className="text-gray-500 text-base font-semibold mb-2">Weight</h3>
+          <div className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{clientData?.weight || 75} kg</div>
         </div>
         <div>
-          <h3 className="text-gray-500 text-sm font-medium mb-2">Height</h3>
-          <div className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{clientData?.height || 175} cm</div>
+          <h3 className="text-gray-500 text-base font-semibold mb-2">Height</h3>
+          <div className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{clientData?.height || 175} cm</div>
         </div>
         <div>
-          <h3 className="text-gray-500 text-sm font-medium mb-2">Age</h3>
-          <div className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">30 yrs</div>
+          <h3 className="text-gray-500 text-base font-semibold mb-2">Age</h3>
+          <div className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">30 yrs</div>
         </div>
       </div>
     </Card>

@@ -13,18 +13,18 @@ export const ActivityTracking = () => {
   ];
 
   return (
-    <Card className="bg-white rounded-xl p-4 lg:p-6">
-      <div className="flex justify-between items-center mb-4 lg:mb-6">
+    <Card className="bg-white rounded-[25px] p-6 h-full">
+      <div className="flex justify-between items-center mb-6">
         <h2 className="text-lg font-semibold">Activity Tracking</h2>
         <RefreshCw className="w-5 h-5 text-gray-500" />
       </div>
 
       {/* Calendar Days */}
-      <div className="grid grid-cols-7 gap-2 mb-6 lg:mb-8">
+      <div className="grid grid-cols-7 gap-2 mb-8">
         {days.map((item, index) => (
           <div key={index} className="text-center">
-            <div className="text-xs lg:text-sm text-gray-600 mb-1">{item.day}</div>
-            <div className={`text-sm lg:text-base font-medium p-1 lg:p-2 rounded-lg ${
+            <div className="text-sm text-gray-600 mb-1">{item.day}</div>
+            <div className={`text-base font-medium p-2 rounded-lg ${
               item.isActive 
                 ? 'bg-[#FF6B6B] text-white' 
                 : 'text-gray-900'
@@ -36,7 +36,7 @@ export const ActivityTracking = () => {
       </div>
 
       {/* Activity Graph */}
-      <div className="relative h-[150px] lg:h-[200px] mt-4 lg:mt-8">
+      <div className="relative h-[calc(100%-12rem)] mt-4">
         <img 
           src="/lovable-uploads/c974cd7e-4430-4775-ab53-9c2d25ce4933.png" 
           alt="Activity graph" 

@@ -3,7 +3,7 @@ import { User, Star, Clock, Phone, MoreHorizontal, ChevronRight } from "lucide-r
 
 export const AvailableTrainer = () => {
   return (
-    <Card className="bg-gradient-to-br from-[#0EA5E9]/10 to-[#38BDF8]/5 p-6 rounded-[25px] h-full hover:shadow-lg hover:shadow-[#0EA5E9]/10 transition-all duration-300 group">
+    <Card className="bg-gradient-to-br from-[#0EA5E9]/10 to-[#38BDF8]/5 p-6 rounded-[25px] h-full hover:shadow-lg hover:shadow-[#0EA5E9]/10 transition-all duration-300 group overflow-hidden">
       <div className="flex flex-col gap-4">
         <div className="flex justify-between items-center">
           <div className="bg-[#0EA5E9] p-3 rounded-xl w-fit group-hover:scale-105 transition-transform duration-300">
@@ -23,7 +23,7 @@ export const AvailableTrainer = () => {
               <span className="text-sm font-medium text-yellow-700">4.9</span>
             </div>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-3">
             <div className="flex items-center gap-3 bg-white/50 p-3 rounded-xl hover:bg-white/80 transition-all duration-300">
               <img 
                 src="/lovable-uploads/49fec05a-cd8e-4715-b93f-7582ead9e45d.png"

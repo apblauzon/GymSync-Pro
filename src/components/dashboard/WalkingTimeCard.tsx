@@ -35,7 +35,7 @@ export const WalkingTimeCard = () => {
           </div>
         </div>
 
-        <div className="mt-auto">
+        <div className="mt-auto pb-2">
           <button className="w-full flex items-center justify-center gap-2 text-[#2E7D32] py-2 rounded-lg hover:bg-[#2E7D32]/10 transition-colors duration-300">
             View Details <ArrowRight className="w-4 h-4" />
           </button>

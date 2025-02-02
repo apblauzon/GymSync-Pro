@@ -44,15 +44,20 @@ const Login = () => {
       });
 
       if (error) {
-        let errorMessage = error.message;
+        let errorMessage = "Invalid email or password";
+        
+        // Handle specific error cases
         if (error.message.includes('Email not confirmed')) {
-          errorMessage = "Please check your email and confirm your account before logging in.";
+          errorMessage = "Please check your email and confirm your account before logging in. If you need a new confirmation email, please register again.";
+        } else if (error.message.includes('Invalid login credentials')) {
+          errorMessage = "The email or password you entered is incorrect. Please try again.";
         }
         
         toast({
           variant: "destructive",
           title: "Login failed",
           description: errorMessage,
+          duration: 5000,
         });
         return;
       }
@@ -61,14 +66,16 @@ const Login = () => {
         toast({
           title: "Login successful",
           description: "Welcome back!",
+          duration: 3000,
         });
         navigate("/dashboard");
       }
-    } catch (error) {
+    } catch (error: any) {
       toast({
         variant: "destructive",
         title: "An error occurred",
         description: "Please try again later.",
+        duration: 5000,
       });
     } finally {
       setIsLoading(false);
@@ -93,6 +100,8 @@ const Login = () => {
               value={formData.email}
               onChange={handleInputChange}
               required
+              placeholder="Enter your email"
+              className="mt-1"
             />
           </div>
 
@@ -105,6 +114,8 @@ const Login = () => {
               value={formData.password}
               onChange={handleInputChange}
               required
+              placeholder="Enter your password"
+              className="mt-1"
             />
           </div>
 

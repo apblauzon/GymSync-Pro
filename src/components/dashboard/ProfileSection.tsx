@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { MoreHorizontal, Trophy, Activity, Calendar, Target, Clock, Heart } from "lucide-react";
+import { MoreHorizontal, Trophy, Activity, Calendar, Target, Clock, Heart, ChevronRight } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -21,10 +21,10 @@ export const ProfileSection = () => {
   });
 
   return (
-    <Card className="bg-[#D3E4FD] text-gray-800 p-6 py-8 rounded-[25px] shadow-lg">
+    <Card className="bg-[#D3E4FD] text-gray-800 p-6 py-8 rounded-[25px] shadow-lg hover:shadow-xl transition-all duration-300">
       <div className="flex justify-between items-start">
         <div className="flex items-center gap-4 flex-1">
-          <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center overflow-hidden shadow-md">
+          <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center overflow-hidden shadow-md hover:scale-105 transition-transform duration-300">
             <img 
               src="/lovable-uploads/49fec05a-cd8e-4715-b93f-7582ead9e45d.png" 
               alt="Profile" 
@@ -32,13 +32,15 @@ export const ProfileSection = () => {
             />
           </div>
           <div>
-            <h3 className="text-2xl font-semibold mb-2">{clientData?.name}</h3>
+            <h3 className="text-2xl font-semibold mb-2 hover:text-blue-600 transition-colors duration-300">
+              {clientData?.name}
+            </h3>
             <div className="flex items-center gap-4 text-sm">
-              <div className="flex items-center gap-1 bg-white/50 px-3 py-1 rounded-full">
+              <div className="flex items-center gap-1 bg-white/50 px-3 py-1 rounded-full hover:bg-white/80 transition-colors duration-300">
                 <Trophy className="w-4 h-4 text-blue-600" />
                 <span>Advanced</span>
               </div>
-              <div className="flex items-center gap-1 bg-white/50 px-3 py-1 rounded-full">
+              <div className="flex items-center gap-1 bg-white/50 px-3 py-1 rounded-full hover:bg-white/80 transition-colors duration-300">
                 <Activity className="w-4 h-4 text-blue-600" />
                 <span>14,750 steps</span>
               </div>
@@ -48,33 +50,37 @@ export const ProfileSection = () => {
         
         <div className="flex-1">
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-white/50 p-4 rounded-2xl">
+            <div className="bg-white/50 p-4 rounded-2xl hover:bg-white/80 transition-all duration-300 hover:shadow-md cursor-pointer group">
               <div className="flex items-center gap-2 mb-2">
                 <Calendar className="w-5 h-5 text-blue-600" />
                 <span className="font-semibold">Member Since</span>
               </div>
               <p className="text-sm text-gray-600">{new Date(clientData?.join_date || '').toLocaleDateString()}</p>
+              <ChevronRight className="w-4 h-4 text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-auto mt-2" />
             </div>
-            <div className="bg-white/50 p-4 rounded-2xl">
+            <div className="bg-white/50 p-4 rounded-2xl hover:bg-white/80 transition-all duration-300 hover:shadow-md cursor-pointer group">
               <div className="flex items-center gap-2 mb-2">
                 <Target className="w-5 h-5 text-blue-600" />
                 <span className="font-semibold">Goals Met</span>
               </div>
               <p className="text-sm text-gray-600">15 this month</p>
+              <ChevronRight className="w-4 h-4 text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-auto mt-2" />
             </div>
-            <div className="bg-white/50 p-4 rounded-2xl">
+            <div className="bg-white/50 p-4 rounded-2xl hover:bg-white/80 transition-all duration-300 hover:shadow-md cursor-pointer group">
               <div className="flex items-center gap-2 mb-2">
                 <Clock className="w-5 h-5 text-blue-600" />
                 <span className="font-semibold">Active Hours</span>
               </div>
               <p className="text-sm text-gray-600">{clientData?.usage_hours || 0} hours</p>
+              <ChevronRight className="w-4 h-4 text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-auto mt-2" />
             </div>
-            <div className="bg-white/50 p-4 rounded-2xl">
+            <div className="bg-white/50 p-4 rounded-2xl hover:bg-white/80 transition-all duration-300 hover:shadow-md cursor-pointer group">
               <div className="flex items-center gap-2 mb-2">
                 <Heart className="w-5 h-5 text-blue-600" />
                 <span className="font-semibold">Health Score</span>
               </div>
               <p className="text-sm text-gray-600">92/100</p>
+              <ChevronRight className="w-4 h-4 text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-auto mt-2" />
             </div>
           </div>
         </div>

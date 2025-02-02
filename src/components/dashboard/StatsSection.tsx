@@ -2,21 +2,52 @@ import { Card } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Scale, Ruler, CalendarDays, Activity, Heart, Target } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 
 export const StatsSection = () => {
+  const { toast } = useToast();
+
   const { data: clientData } = useQuery({
     queryKey: ['client'],
     queryFn: async () => {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) throw new Error('No user found');
       
-      const { data: client } = await supabase
+      const { data: existingClient } = await supabase
         .from('clients')
         .select('*')
         .eq('user_id', user.id)
-        .single();
+        .maybeSingle();
       
-      return client;
+      if (!existingClient) {
+        // Create a new client profile if none exists
+        const { data: newClient, error: createError } = await supabase
+          .from('clients')
+          .insert([
+            {
+              user_id: user.id,
+              name: user.email?.split('@')[0] || 'New User',
+              email: user.email,
+              weight: 75, // Default values
+              height: 175,
+            }
+          ])
+          .select()
+          .single();
+
+        if (createError) {
+          toast({
+            title: "Error",
+            description: "Failed to create client profile",
+            variant: "destructive",
+          });
+          throw createError;
+        }
+
+        return newClient;
+      }
+      
+      return existingClient;
     }
   });
 

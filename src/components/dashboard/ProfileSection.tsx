@@ -2,21 +2,52 @@ import { Card } from "@/components/ui/card";
 import { MoreHorizontal, Trophy, Activity, Calendar, Target, Clock, Heart, ChevronRight } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/components/ui/use-toast";
 
 export const ProfileSection = () => {
+  const { toast } = useToast();
+
   const { data: clientData } = useQuery({
     queryKey: ['client'],
     queryFn: async () => {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) throw new Error('No user found');
       
-      const { data: client } = await supabase
+      const { data: existingClient } = await supabase
         .from('clients')
         .select('*')
         .eq('user_id', user.id)
-        .single();
+        .maybeSingle();
       
-      return client;
+      if (!existingClient) {
+        // Create a new client profile if none exists
+        const { data: newClient, error: createError } = await supabase
+          .from('clients')
+          .insert([
+            {
+              user_id: user.id,
+              name: user.email?.split('@')[0] || 'New User',
+              email: user.email,
+              join_date: new Date().toISOString(),
+              usage_hours: 0
+            }
+          ])
+          .select()
+          .single();
+
+        if (createError) {
+          toast({
+            title: "Error",
+            description: "Failed to create client profile",
+            variant: "destructive",
+          });
+          throw createError;
+        }
+
+        return newClient;
+      }
+      
+      return existingClient;
     }
   });
 
@@ -34,7 +65,7 @@ export const ProfileSection = () => {
             </div>
             <div>
               <h3 className="text-2xl font-semibold mb-1 hover:text-blue-600 transition-colors duration-300">
-                {clientData?.name}
+                {clientData?.name || 'Loading...'}
               </h3>
             </div>
           </div>

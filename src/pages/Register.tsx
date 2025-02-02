@@ -38,8 +38,14 @@ const Register = () => {
   const prevStep = () => setStep(1);
 
   const createClientProfile = async (userId: string) => {
+    const { data: session } = await supabase.auth.getSession();
+    
+    if (!session?.session) {
+      throw new Error('No active session');
+    }
+
     const { error } = await supabase.from('clients').insert({
-      user_id: userId, // This is crucial - we need to set the user_id
+      user_id: userId,
       name: formData.name,
       email: formData.email,
       phone: formData.phone,
@@ -86,25 +92,40 @@ const Register = () => {
       }
 
       if (authData.user) {
-        // Wait for the client profile to be created
-        await createClientProfile(authData.user.id);
-        
-        toast({
-          title: "Registration successful!",
-          description: "Please check your email to verify your account.",
-        });
-        
-        // Sign in the user immediately after registration
+        // Sign in immediately after registration
         const { error: signInError } = await supabase.auth.signInWithPassword({
           email: formData.email,
           password: formData.password,
         });
 
         if (signInError) {
-          console.error('Error signing in:', signInError);
+          toast({
+            variant: "destructive",
+            title: "Sign in failed",
+            description: signInError.message,
+          });
           navigate("/login");
-        } else {
+          return;
+        }
+
+        // Now create the client profile after successful sign in
+        try {
+          await createClientProfile(authData.user.id);
+          
+          toast({
+            title: "Registration successful!",
+            description: "Welcome to GymSync Pro!",
+          });
+          
           navigate("/dashboard");
+        } catch (profileError) {
+          console.error('Error creating profile:', profileError);
+          toast({
+            variant: "destructive",
+            title: "Profile creation failed",
+            description: "There was an error creating your profile. Please contact support.",
+          });
+          navigate("/login");
         }
       }
     } catch (error) {

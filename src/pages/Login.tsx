@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate, useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -44,10 +44,15 @@ const Login = () => {
       });
 
       if (error) {
+        let errorMessage = error.message;
+        if (error.message.includes('Email not confirmed')) {
+          errorMessage = "Please check your email and confirm your account before logging in.";
+        }
+        
         toast({
           variant: "destructive",
           title: "Login failed",
-          description: error.message,
+          description: errorMessage,
         });
         return;
       }

@@ -38,12 +38,6 @@ const Register = () => {
   const prevStep = () => setStep(1);
 
   const createClientProfile = async (userId: string) => {
-    const { data: session } = await supabase.auth.getSession();
-    
-    if (!session?.session) {
-      throw new Error('No active session');
-    }
-
     const { error } = await supabase.from('clients').insert({
       user_id: userId,
       name: formData.name,
@@ -92,32 +86,17 @@ const Register = () => {
       }
 
       if (authData.user) {
-        // Sign in immediately after registration
-        const { error: signInError } = await supabase.auth.signInWithPassword({
-          email: formData.email,
-          password: formData.password,
-        });
-
-        if (signInError) {
-          toast({
-            variant: "destructive",
-            title: "Sign in failed",
-            description: signInError.message,
-          });
-          navigate("/login");
-          return;
-        }
-
-        // Now create the client profile after successful sign in
+        // Create the client profile immediately after signup
         try {
           await createClientProfile(authData.user.id);
           
           toast({
             title: "Registration successful!",
-            description: "Welcome to GymSync Pro!",
+            description: "Please check your email to confirm your account before logging in.",
           });
           
-          navigate("/dashboard");
+          // Redirect to login page since email confirmation is required
+          navigate("/login");
         } catch (profileError) {
           console.error('Error creating profile:', profileError);
           toast({
@@ -292,6 +271,7 @@ const Register = () => {
       </div>
     </div>
   );
+
 };
 
 export default Register;

@@ -8,9 +8,15 @@ export const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
 
   useEffect(() => {
+    // Check initial session
     const checkAuth = async () => {
       try {
-        const { data: { session } } = await supabase.auth.getSession();
+        const { data: { session }, error } = await supabase.auth.getSession();
+        if (error) {
+          console.error("Auth check failed:", error);
+          setIsAuthenticated(false);
+          return;
+        }
         setIsAuthenticated(!!session);
       } catch (error) {
         console.error("Auth check failed:", error);
@@ -22,8 +28,10 @@ export const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 
     checkAuth();
 
+    // Listen for auth state changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setIsAuthenticated(!!session);
+      setIsLoading(false);
     });
 
     return () => {

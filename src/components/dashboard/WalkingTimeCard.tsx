@@ -3,7 +3,7 @@ import { MoreHorizontal, Calendar, Timer, ArrowRight } from "lucide-react";
 
 export const WalkingTimeCard = () => {
   return (
-    <Card className="bg-[#F2FCE2] p-6 pb-12 rounded-[25px] h-[320px] hover:shadow-lg transition-all duration-300 group">
+    <Card className="bg-[#F2FCE2] p-6 pb-12 rounded-[25px] h-[360px] hover:shadow-lg transition-all duration-300 group">
       <div className="flex flex-col h-full">
         <div className="flex justify-between items-center mb-3">
           <h3 className="text-2xl font-semibold text-gray-800 group-hover:text-[#2E7D32] transition-colors duration-300">
@@ -19,11 +19,11 @@ export const WalkingTimeCard = () => {
           <span className="text-base">9 Jan, 2025</span>
         </div>
         
-        <div className="flex-grow flex items-center justify-center mb-3 group-hover:scale-105 transition-transform duration-300">
+        <div className="flex-grow flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300">
           <img 
             src="/lovable-uploads/a1291dad-e2fc-4c85-8531-662cfae4b8bc.png" 
             alt="Running shoes" 
-            className="h-24 w-auto object-contain"
+            className="h-32 w-auto object-contain"
           />
         </div>
         

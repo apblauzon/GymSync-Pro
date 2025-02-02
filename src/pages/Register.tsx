@@ -122,6 +122,7 @@ const Register = () => {
           navigate("/login");
         } catch (profileError: any) {
           setError(profileError.message || "Error creating profile");
+          // Still navigate to login since the auth account was created
           navigate("/login");
         }
       }

@@ -3,7 +3,7 @@ import { MoreHorizontal, Calendar, Timer, ArrowRight } from "lucide-react";
 
 export const WalkingTimeCard = () => {
   return (
-    <Card className="bg-[#F2FCE2] p-6 pb-12 rounded-[25px] h-[360px] hover:shadow-lg transition-all duration-300 group">
+    <Card className="bg-[#F2FCE2] p-6 rounded-[25px] h-[400px] hover:shadow-lg transition-all duration-300 group relative overflow-hidden">
       <div className="flex flex-col h-full">
         <div className="flex justify-between items-center mb-3">
           <h3 className="text-2xl font-semibold text-gray-800 group-hover:text-[#2E7D32] transition-colors duration-300">
@@ -27,13 +27,16 @@ export const WalkingTimeCard = () => {
           />
         </div>
         
-        <div className="text-center transform group-hover:-translate-y-1 transition-transform duration-300">
+        <div className="text-center transform group-hover:-translate-y-1 transition-transform duration-300 mb-6">
           <p className="text-base text-gray-600 mb-2">Double Walking Time</p>
           <div className="flex items-baseline justify-center gap-2">
             <span className="text-4xl font-bold text-[#2E7D32] group-hover:scale-110 transition-transform duration-300">34</span>
             <span className="text-xl text-gray-600">min</span>
           </div>
-          <button className="mt-4 flex items-center justify-center gap-2 w-full text-[#2E7D32] py-2 rounded-lg hover:bg-[#2E7D32]/10 transition-colors duration-300">
+        </div>
+
+        <div className="mt-auto">
+          <button className="w-full flex items-center justify-center gap-2 text-[#2E7D32] py-2 rounded-lg hover:bg-[#2E7D32]/10 transition-colors duration-300">
             View Details <ArrowRight className="w-4 h-4" />
           </button>
         </div>

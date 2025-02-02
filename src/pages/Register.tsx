@@ -39,7 +39,7 @@ const Register = () => {
 
   const createClientProfile = async (userId: string) => {
     const { error } = await supabase.from('clients').insert({
-      user_id: userId,
+      user_id: userId, // This is crucial - we need to set the user_id
       name: formData.name,
       email: formData.email,
       phone: formData.phone,
@@ -65,6 +65,7 @@ const Register = () => {
     setIsLoading(true);
 
     try {
+      // First, sign up the user
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
@@ -85,13 +86,26 @@ const Register = () => {
       }
 
       if (authData.user) {
+        // Wait for the client profile to be created
         await createClientProfile(authData.user.id);
         
         toast({
           title: "Registration successful!",
           description: "Please check your email to verify your account.",
         });
-        navigate("/login");
+        
+        // Sign in the user immediately after registration
+        const { error: signInError } = await supabase.auth.signInWithPassword({
+          email: formData.email,
+          password: formData.password,
+        });
+
+        if (signInError) {
+          console.error('Error signing in:', signInError);
+          navigate("/login");
+        } else {
+          navigate("/dashboard");
+        }
       }
     } catch (error) {
       toast({

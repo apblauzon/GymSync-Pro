@@ -102,6 +102,7 @@ const Register = () => {
           data: {
             username: formData.name,
           },
+          emailRedirectTo: `${window.location.origin}/verify-email`,
         },
       });
 
@@ -116,10 +117,14 @@ const Register = () => {
           
           toast({
             title: "Registration successful!",
-            description: "Please check your email to confirm your account before logging in.",
+            description: "Please check your email to confirm your account. You will be redirected to the login page.",
+            duration: 5000,
           });
           
-          navigate("/login");
+          // Delay navigation to ensure the user sees the toast message
+          setTimeout(() => {
+            navigate("/login");
+          }, 2000);
         } catch (profileError: any) {
           setError(profileError.message || "Error creating profile");
           // Still navigate to login since the auth account was created

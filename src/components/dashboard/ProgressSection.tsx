@@ -9,13 +9,28 @@ const progressData = [
 
 const COLORS = ['#33C3F0', '#E8F4FF'];
 
+const timePeriods = [
+  "This Week",
+  "Last Week",
+  "This Month",
+  "Last Month",
+  "Last 20 Days",
+  "Last 30 Days",
+  "Last 60 Days",
+  "Last Quarter",
+];
+
 export const ProgressSection = () => {
   return (
     <Card className="h-full p-8 rounded-[25px] shadow-lg">
       <div className="flex justify-between items-center mb-6">
         <h2 className="font-semibold text-xl">Progress</h2>
-        <select className="bg-[#F3F0FF] px-3 py-1 rounded-full text-sm">
-          <option>This Week</option>
+        <select className="bg-[#F3F0FF] px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-[#E8E3FF] transition-colors">
+          {timePeriods.map((period) => (
+            <option key={period} value={period}>
+              {period}
+            </option>
+          ))}
         </select>
       </div>
       <div className="relative w-64 h-64 mx-auto mb-8">

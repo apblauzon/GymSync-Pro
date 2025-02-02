@@ -1,18 +1,20 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { RegistrationStepOne } from "@/components/auth/RegistrationStepOne";
+import { RegistrationStepTwo } from "@/components/auth/RegistrationStepTwo";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { FormData } from "@/types/auth";
 
 const Register = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({
+  const [error, setError] = useState<string | null>(null);
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     password: "",
@@ -22,20 +24,49 @@ const Register = () => {
     membershipType: "",
     weight: "",
     height: "",
-    goal: "",
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    setError(null);
   };
 
   const handleSelectChange = (name: string, value: string) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
+    setError(null);
   };
 
-  const nextStep = () => setStep(2);
-  const prevStep = () => setStep(1);
+  const validateForm = () => {
+    if (step === 1) {
+      if (!formData.name || !formData.email || !formData.password || !formData.phone || !formData.birthday) {
+        setError("Please fill in all required fields");
+        return false;
+      }
+      if (formData.password.length < 6) {
+        setError("Password must be at least 6 characters long");
+        return false;
+      }
+    } else {
+      if (!formData.gender || !formData.membershipType || !formData.weight || !formData.height) {
+        setError("Please fill in all required fields");
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const nextStep = () => {
+    if (validateForm()) {
+      setStep(2);
+      setError(null);
+    }
+  };
+
+  const prevStep = () => {
+    setStep(1);
+    setError(null);
+  };
 
   const createClientProfile = async (userId: string) => {
     const { error } = await supabase.from('clients').insert({
@@ -46,10 +77,6 @@ const Register = () => {
       birthday: formData.birthday ? new Date(formData.birthday).toISOString() : null,
       gender: formData.gender,
       membership_type: formData.membershipType,
-      join_date: new Date().toISOString(),
-      usage_hours: 0,
-      last_visit: null,
-      smart_watch_rented: false,
       weight: formData.weight ? parseFloat(formData.weight) : null,
       height: formData.height ? parseFloat(formData.height) : null,
     });
@@ -62,10 +89,12 @@ const Register = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validateForm()) return;
+    
     setIsLoading(true);
+    setError(null);
 
     try {
-      // First, sign up the user
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
@@ -77,16 +106,11 @@ const Register = () => {
       });
 
       if (authError) {
-        toast({
-          variant: "destructive",
-          title: "Registration failed",
-          description: authError.message,
-        });
+        setError(authError.message);
         return;
       }
 
       if (authData.user) {
-        // Create the client profile immediately after signup
         try {
           await createClientProfile(authData.user.id);
           
@@ -95,24 +119,14 @@ const Register = () => {
             description: "Please check your email to confirm your account before logging in.",
           });
           
-          // Redirect to login page since email confirmation is required
           navigate("/login");
-        } catch (profileError) {
-          console.error('Error creating profile:', profileError);
-          toast({
-            variant: "destructive",
-            title: "Profile creation failed",
-            description: "There was an error creating your profile. Please contact support.",
-          });
+        } catch (profileError: any) {
+          setError(profileError.message || "Error creating profile");
           navigate("/login");
         }
       }
-    } catch (error) {
-      toast({
-        variant: "destructive",
-        title: "An error occurred",
-        description: "Please try again later.",
-      });
+    } catch (error: any) {
+      setError(error.message || "An unexpected error occurred");
     } finally {
       setIsLoading(false);
     }
@@ -129,129 +143,45 @@ const Register = () => {
           </div>
         </div>
 
+        {error && (
+          <Alert variant="destructive" className="mb-6">
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
+
         <form onSubmit={handleSubmit} className="space-y-6">
           {step === 1 ? (
             <>
-              <div className="form-group">
-                <Label htmlFor="name">Full Name</Label>
-                <Input
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <Label htmlFor="password">Password</Label>
-                <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  required
-                  minLength={6}
-                />
-              </div>
-
-              <div className="form-group">
-                <Label htmlFor="phone">Phone Number</Label>
-                <Input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <Label htmlFor="birthday">Birthday</Label>
-                <Input
-                  id="birthday"
-                  name="birthday"
-                  type="date"
-                  value={formData.birthday}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-
-              <Button type="button" onClick={nextStep} className="w-full">
+              <RegistrationStepOne
+                formData={formData}
+                handleInputChange={handleInputChange}
+                isLoading={isLoading}
+              />
+              <Button
+                type="button"
+                onClick={nextStep}
+                className="w-full"
+                disabled={isLoading}
+              >
                 Next Step
               </Button>
             </>
           ) : (
             <>
-              <div className="form-group">
-                <Label htmlFor="gender">Gender</Label>
-                <Select name="gender" onValueChange={(value) => handleSelectChange("gender", value)}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select gender" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="male">Male</SelectItem>
-                    <SelectItem value="female">Female</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="form-group">
-                <Label htmlFor="membershipType">Membership Type</Label>
-                <Select name="membershipType" onValueChange={(value) => handleSelectChange("membershipType", value)}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select membership" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="basic">Basic</SelectItem>
-                    <SelectItem value="standard">Standard</SelectItem>
-                    <SelectItem value="premium">Premium</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="form-group">
-                <Label htmlFor="weight">Weight (kg)</Label>
-                <Input
-                  id="weight"
-                  name="weight"
-                  type="number"
-                  value={formData.weight}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <Label htmlFor="height">Height (cm)</Label>
-                <Input
-                  id="height"
-                  name="height"
-                  type="number"
-                  value={formData.height}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-
+              <RegistrationStepTwo
+                formData={formData}
+                handleInputChange={handleInputChange}
+                handleSelectChange={handleSelectChange}
+                isLoading={isLoading}
+              />
               <div className="flex gap-4">
-                <Button type="button" onClick={prevStep} variant="outline" className="w-full">
+                <Button
+                  type="button"
+                  onClick={prevStep}
+                  variant="outline"
+                  className="w-full"
+                  disabled={isLoading}
+                >
                   Back
                 </Button>
                 <Button type="submit" className="w-full" disabled={isLoading}>
@@ -271,7 +201,6 @@ const Register = () => {
       </div>
     </div>
   );
-
 };
 
 export default Register;

@@ -21,7 +21,7 @@ export const WalkingTimeCard = () => {
         
         <div className="flex-grow flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300">
           <img 
-            src="/lovable-uploads/a1291dad-e2fc-4c85-8531-662cfae4b8bc.png" 
+            src="/uploads/a1291dad-e2fc-4c85-8531-662cfae4b8bc.png" 
             alt="Running shoes" 
             className="h-32 w-auto object-contain"
           />

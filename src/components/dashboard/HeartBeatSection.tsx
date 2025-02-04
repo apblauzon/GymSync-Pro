@@ -19,7 +19,7 @@ export const HeartBeatSection = () => {
         You are calm and ready for exercises!
       </div>
       <img 
-        src="/lovable-uploads/c99e39bb-c731-41bb-b223-86357dc26fbf.png" 
+        src="/uploads/c99e39bb-c731-41bb-b223-86357dc26fbf.png" 
         alt="Heart rate graph" 
         className="w-full h-16 sm:h-20 object-contain"
       />

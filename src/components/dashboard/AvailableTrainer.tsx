@@ -26,7 +26,7 @@ export const AvailableTrainer = () => {
           <div className="space-y-2 md:space-y-3">
             <div className="flex items-center gap-2 md:gap-3 bg-white/50 p-2 md:p-3 rounded-xl hover:bg-white/80 transition-all duration-300">
               <img 
-                src="/lovable-uploads/49fec05a-cd8e-4715-b93f-7582ead9e45d.png"
+                src="/uploads/49fec05a-cd8e-4715-b93f-7582ead9e45d.png"
                 alt="John Smith" 
                 className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover"
               />

@@ -58,7 +58,7 @@ export const ProfileSection = () => {
           <div className="flex items-center gap-4">
             <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center overflow-hidden shadow-md hover:scale-105 transition-transform duration-300">
               <img 
-                src="/lovable-uploads/49fec05a-cd8e-4715-b93f-7582ead9e45d.png" 
+                src="/uploads/49fec05a-cd8e-4715-b93f-7582ead9e45d.png" 
                 alt="Profile" 
                 className="w-full h-full object-cover"
               />

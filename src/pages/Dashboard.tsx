@@ -11,11 +11,15 @@ import { WalkingTimeCard } from "@/components/dashboard/WalkingTimeCard";
 import { LastSessionDate } from "@/components/dashboard/LastSessionDate";
 import { AvailableTrainer } from "@/components/dashboard/AvailableTrainer";
 import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
+import { StatsGrid } from "@/components/dashboard/StatsGrid";
 
 const Overview = () => {
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <ProfileSection />
+      <div className="grid grid-cols-4 gap-4">
+        <StatsGrid />
+      </div>
       <ActivityTracking />
       <WorkoutStreak />
       <StatsSection />
@@ -52,12 +56,12 @@ const Dashboard = () => {
       <main className="flex-1 p-6 overflow-y-auto">
         <div className="max-w-[1200px] mx-auto">
           <Routes>
-            <Route path="/" element={<Navigate to="/dashboard/overview" replace />} />
-            <Route path="/overview" element={<Overview />} />
-            <Route path="/progress" element={<Progress />} />
-            <Route path="/health" element={<Health />} />
-            <Route path="/running" element={<Running />} />
-            <Route path="/sessions" element={<Sessions />} />
+            <Route path="/" element={<Navigate to="overview" replace />} />
+            <Route path="overview" element={<Overview />} />
+            <Route path="progress" element={<Progress />} />
+            <Route path="health" element={<Health />} />
+            <Route path="running" element={<Running />} />
+            <Route path="sessions" element={<Sessions />} />
           </Routes>
         </div>
       </main>

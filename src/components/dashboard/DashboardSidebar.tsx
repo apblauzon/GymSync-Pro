@@ -4,10 +4,6 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { 
   User, 
-  Timer, 
-  Route as RouteIcon, 
-  Zap, 
-  Activity,
   LineChart,
   Heart,
   Bike,
@@ -48,31 +44,13 @@ export const DashboardSidebar = () => {
     <aside className="w-[300px] min-h-screen bg-white shadow-lg flex flex-col">
       {/* Profile Section */}
       <div className="p-6 border-b">
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
             <User className="w-6 h-6 text-blue-600" />
           </div>
           <div>
             <h3 className="font-medium text-gray-900">{clientData?.name || 'Loading...'}</h3>
             <p className="text-sm text-gray-500">{clientData?.email}</p>
-          </div>
-        </div>
-        <div className="grid grid-cols-2 gap-2 text-sm">
-          <div className="flex items-center gap-2 p-2 bg-gray-50 rounded">
-            <Timer className="w-4 h-4 text-blue-600" />
-            <span>56m</span>
-          </div>
-          <div className="flex items-center gap-2 p-2 bg-gray-50 rounded">
-            <RouteIcon className="w-4 h-4 text-blue-600" />
-            <span>5km</span>
-          </div>
-          <div className="flex items-center gap-2 p-2 bg-gray-50 rounded">
-            <Zap className="w-4 h-4 text-blue-600" />
-            <span>1345 kcal</span>
-          </div>
-          <div className="flex items-center gap-2 p-2 bg-gray-50 rounded">
-            <Activity className="w-4 h-4 text-blue-600" />
-            <span>95%</span>
           </div>
         </div>
       </div>

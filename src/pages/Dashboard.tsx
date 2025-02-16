@@ -1,48 +1,25 @@
-import { ProgressSection } from "@/components/dashboard/ProgressSection";
-import { HeartMetrics } from "@/components/dashboard/HeartMetrics";
-import { StatsGrid } from "@/components/dashboard/StatsGrid";
+
 import { ProfileSection } from "@/components/dashboard/ProfileSection";
 import { StatsSection } from "@/components/dashboard/StatsSection";
-import { ActionsSection } from "@/components/dashboard/ActionsSection";
-import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
-import { WalkingTimeCard } from "@/components/dashboard/WalkingTimeCard";
 import { ActivityTracking } from "@/components/dashboard/ActivityTracking";
-import { LastSessionDate } from "@/components/dashboard/LastSessionDate";
-import { AvailableTrainer } from "@/components/dashboard/AvailableTrainer";
 import { WorkoutStreak } from "@/components/dashboard/WorkoutStreak";
+import { DashboardSidebar } from "@/components/dashboard/DashboardSidebar";
 
 const Dashboard = () => {
   return (
-    <div className="min-h-screen bg-[#F8F7FF] p-4 lg:p-6">
-      <div className="grid grid-cols-12 gap-4 h-screen max-h-[900px]">
-        {/* Left Column */}
-        <div className="col-span-12 lg:col-span-3 grid grid-rows-[1fr,1fr] gap-4">
-          <ProgressSection />
-          <HeartMetrics />
-        </div>
+    <div className="min-h-screen bg-[#F8F7FF] flex">
+      {/* Vertical Sidebar */}
+      <DashboardSidebar />
 
-        {/* Middle Column */}
-        <div className="col-span-12 lg:col-span-6 space-y-4">
-          <div className="grid grid-cols-4 gap-4">
-            <StatsGrid />
-          </div>
+      {/* Main Content */}
+      <main className="flex-1 p-6 overflow-y-auto">
+        <div className="max-w-[1200px] mx-auto space-y-4">
           <ProfileSection />
           <ActivityTracking />
           <WorkoutStreak />
           <StatsSection />
         </div>
-
-        {/* Right Column */}
-        <div className="col-span-12 lg:col-span-3 grid grid-rows-[auto,auto,auto,1fr,auto] gap-4">
-          <WalkingTimeCard />
-          <div className="grid grid-cols-2 gap-4">
-            <LastSessionDate />
-            <AvailableTrainer />
-          </div>
-          <UpcomingEvents />
-          <ActionsSection />
-        </div>
-      </div>
+      </main>
     </div>
   );
 };

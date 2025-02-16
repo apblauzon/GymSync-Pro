@@ -9,6 +9,44 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      chart_history: {
+        Row: {
+          chart_config: Json
+          created_at: string | null
+          csv_file_id: string | null
+          data_insight: string | null
+          id: string
+          prompt: string
+          tokens_used: number
+        }
+        Insert: {
+          chart_config: Json
+          created_at?: string | null
+          csv_file_id?: string | null
+          data_insight?: string | null
+          id?: string
+          prompt: string
+          tokens_used?: number
+        }
+        Update: {
+          chart_config?: Json
+          created_at?: string | null
+          csv_file_id?: string | null
+          data_insight?: string | null
+          id?: string
+          prompt?: string
+          tokens_used?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "chart_history_csv_file_id_fkey"
+            columns: ["csv_file_id"]
+            isOneToOne: false
+            referencedRelation: "csv_files"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       clients: {
         Row: {
           birthday: string | null
@@ -70,18 +108,21 @@ export type Database = {
         Row: {
           created_at: string | null
           data: Json
+          display_name: string
           filename: string
           id: string
         }
         Insert: {
           created_at?: string | null
           data: Json
+          display_name: string
           filename: string
           id?: string
         }
         Update: {
           created_at?: string | null
           data?: Json
+          display_name?: string
           filename?: string
           id?: string
         }
@@ -237,6 +278,36 @@ export type Database = {
           trainer_id?: number
           updated_at?: string
           user_id?: string
+        }
+        Relationships: []
+      }
+      user_credits: {
+        Row: {
+          created_at: string
+          credit: number | null
+          email: string | null
+          id: string
+          ip_address: string
+          remaining_credits: number
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          credit?: number | null
+          email?: string | null
+          id?: string
+          ip_address: string
+          remaining_credits?: number
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          credit?: number | null
+          email?: string | null
+          id?: string
+          ip_address?: string
+          remaining_credits?: number
+          user_id?: string | null
         }
         Relationships: []
       }

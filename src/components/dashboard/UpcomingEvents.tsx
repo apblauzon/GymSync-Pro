@@ -1,3 +1,4 @@
+
 import { Card } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
@@ -10,7 +11,7 @@ export const UpcomingEvents = () => {
         .from('group_challenges')
         .select('*')
         .order('start_date', { ascending: true })
-        .limit(4);
+        .limit(2);  // Changed from 4 to 2
       
       return data;
     }

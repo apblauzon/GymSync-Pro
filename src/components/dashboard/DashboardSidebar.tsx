@@ -49,7 +49,6 @@ export const DashboardSidebar = () => {
             <User className="w-6 h-6 text-blue-600" />
           </div>
           <div>
-            <h3 className="font-medium text-gray-900">{clientData?.name || 'Loading...'}</h3>
             <p className="text-sm text-gray-500">{clientData?.email}</p>
           </div>
         </div>
@@ -86,7 +85,7 @@ export const DashboardSidebar = () => {
           className={({ isActive }) => `${navLinkClasses} ${isActive ? activeNavLinkClasses : ''}`}
         >
           <Bike className="w-5 h-5" />
-          <span>Running with Kate</span>
+          <span>Daily Activity</span>
         </NavLink>
 
         <NavLink 

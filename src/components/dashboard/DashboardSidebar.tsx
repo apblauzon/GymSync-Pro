@@ -8,9 +8,9 @@ import {
   Route as RouteIcon, 
   Zap, 
   Activity,
-  ChartLineUp,
+  LineChart,
   Heart,
-  Running,
+  Bike,
   Calendar,
   Download,
   Settings,
@@ -91,7 +91,7 @@ export const DashboardSidebar = () => {
           to="/dashboard/progress" 
           className={({ isActive }) => `${navLinkClasses} ${isActive ? activeNavLinkClasses : ''}`}
         >
-          <ChartLineUp className="w-5 h-5" />
+          <LineChart className="w-5 h-5" />
           <span>Progress</span>
         </NavLink>
 
@@ -107,7 +107,7 @@ export const DashboardSidebar = () => {
           to="/dashboard/running" 
           className={({ isActive }) => `${navLinkClasses} ${isActive ? activeNavLinkClasses : ''}`}
         >
-          <Running className="w-5 h-5" />
+          <Bike className="w-5 h-5" />
           <span>Running with Kate</span>
         </NavLink>
 

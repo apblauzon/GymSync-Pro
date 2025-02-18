@@ -1,4 +1,3 @@
-
 import { Routes, Route, Navigate } from "react-router-dom";
 import { ProfileSection } from "@/components/dashboard/ProfileSection";
 import { StatsSection } from "@/components/dashboard/StatsSection";
@@ -12,6 +11,7 @@ import { LastSessionDate } from "@/components/dashboard/LastSessionDate";
 import { AvailableTrainer } from "@/components/dashboard/AvailableTrainer";
 import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
 import { StatsGrid } from "@/components/dashboard/StatsGrid";
+import { ContactAdmin } from "@/components/dashboard/ContactAdmin";
 
 const Overview = () => {
   return (
@@ -23,6 +23,7 @@ const Overview = () => {
       <ActivityTracking />
       <WorkoutStreak />
       <StatsSection />
+      <ContactAdmin />
     </div>
   );
 };

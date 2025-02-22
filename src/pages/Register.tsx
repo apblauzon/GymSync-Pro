@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -9,10 +8,11 @@ import { RegistrationStepTwo } from "@/components/auth/RegistrationStepTwo";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { FormData } from "@/types/auth";
 import { CheckCircle2, Dumbbell } from "lucide-react";
-
 const Register = () => {
   const navigate = useNavigate();
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(1);
   const [error, setError] = useState<string | null>(null);
@@ -26,14 +26,18 @@ const Register = () => {
     gender: "",
     membershipType: "",
     weight: "",
-    height: "",
+    height: ""
   });
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const {
+      name,
+      value
+    } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
     setError(null);
-
     if (name === 'password') {
       // Calculate password strength
       let strength = 0;
@@ -44,12 +48,13 @@ const Register = () => {
       setPasswordStrength(strength);
     }
   };
-
   const handleSelectChange = (name: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
     setError(null);
   };
-
   const validateForm = () => {
     if (step === 1) {
       if (!formData.name || !formData.email || !formData.password || !formData.phone || !formData.birthday) {
@@ -68,21 +73,20 @@ const Register = () => {
     }
     return true;
   };
-
   const nextStep = () => {
     if (validateForm()) {
       setStep(2);
       setError(null);
     }
   };
-
   const prevStep = () => {
     setStep(1);
     setError(null);
   };
-
   const createClientProfile = async (userId: string) => {
-    const { error } = await supabase.from('clients').insert({
+    const {
+      error
+    } = await supabase.from('clients').insert({
       user_id: userId,
       name: formData.name,
       email: formData.email,
@@ -91,49 +95,44 @@ const Register = () => {
       gender: formData.gender,
       membership_type: formData.membershipType,
       weight: formData.weight ? parseFloat(formData.weight) : null,
-      height: formData.height ? parseFloat(formData.height) : null,
+      height: formData.height ? parseFloat(formData.height) : null
     });
-
     if (error) {
       console.error('Error creating client profile:', error);
       throw error;
     }
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
-    
     setIsLoading(true);
     setError(null);
-
     try {
-      const { data: authData, error: authError } = await supabase.auth.signUp({
+      const {
+        data: authData,
+        error: authError
+      } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
         options: {
           data: {
-            username: formData.name,
+            username: formData.name
           },
-          emailRedirectTo: `${window.location.origin}/verify-email`,
-        },
+          emailRedirectTo: `${window.location.origin}/verify-email`
+        }
       });
-
       if (authError) {
         setError(authError.message);
         return;
       }
-
       if (authData.user) {
         try {
           await createClientProfile(authData.user.id);
-          
           toast({
             title: "Registration successful! 🎉",
             description: "Please check your email to confirm your account. You will be redirected to the login page.",
-            duration: 5000,
+            duration: 5000
           });
-          
           setTimeout(() => {
             navigate("/login");
           }, 2000);
@@ -148,7 +147,6 @@ const Register = () => {
       setIsLoading(false);
     }
   };
-
   const getPasswordStrengthClass = () => {
     switch (passwordStrength) {
       case 1:
@@ -163,9 +161,7 @@ const Register = () => {
         return "";
     }
   };
-
-  return (
-    <div className="auth-container">
+  return <div className="auth-container">
       <div className="auth-card">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
@@ -176,86 +172,44 @@ const Register = () => {
             {step === 1 ? "Basic Information" : "Additional Details"}
           </p>
           <div className="flex items-center justify-center gap-2 mb-4">
-            <div className={`w-4 h-4 rounded-full flex items-center justify-center ${
-              step >= 1 ? 'bg-primary' : 'bg-gray-200'
-            }`}>
+            <div className={`w-4 h-4 rounded-full flex items-center justify-center ${step >= 1 ? 'bg-primary' : 'bg-gray-200'}`}>
               {step >= 1 && <CheckCircle2 className="w-3 h-3 text-white" />}
             </div>
             <div className="w-16 h-0.5 bg-gray-200">
-              <div className={`h-full bg-primary transition-all duration-300 ${
-                step === 2 ? 'w-full' : 'w-0'
-              }`} />
+              <div className={`h-full bg-primary transition-all duration-300 ${step === 2 ? 'w-full' : 'w-0'}`} />
             </div>
-            <div className={`w-4 h-4 rounded-full flex items-center justify-center ${
-              step === 2 ? 'bg-primary' : 'bg-gray-200'
-            }`}>
+            <div className={`w-4 h-4 rounded-full flex items-center justify-center ${step === 2 ? 'bg-primary' : 'bg-gray-200'}`}>
               {step === 2 && <CheckCircle2 className="w-3 h-3 text-white" />}
             </div>
           </div>
           <p className="text-sm text-gray-500">Step {step} of 2</p>
         </div>
 
-        {error && (
-          <Alert variant="destructive" className="mb-6">
+        {error && <Alert variant="destructive" className="mb-6">
             <AlertDescription>{error}</AlertDescription>
-          </Alert>
-        )}
+          </Alert>}
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className={`step-transition ${step === 1 ? 'step-enter-active' : 'step-exit-active'}`}>
-            {step === 1 ? (
-              <>
-                <RegistrationStepOne
-                  formData={formData}
-                  handleInputChange={handleInputChange}
-                  isLoading={isLoading}
-                />
-                {formData.password && (
-                  <div className="password-strength-meter">
+            {step === 1 ? <>
+                <RegistrationStepOne formData={formData} handleInputChange={handleInputChange} isLoading={isLoading} />
+                {formData.password && <div className="password-strength-meter">
                     <div className={getPasswordStrengthClass()} />
-                  </div>
-                )}
-                <Button
-                  type="button"
-                  onClick={nextStep}
-                  className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 transition-all duration-300"
-                  disabled={isLoading}
-                >
+                  </div>}
+                <Button type="button" onClick={nextStep} disabled={isLoading} className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 transition-all duration-300 my-[20px]">
                   Next: Additional Details
                 </Button>
-              </>
-            ) : (
-              <>
-                <RegistrationStepTwo
-                  formData={formData}
-                  handleInputChange={handleInputChange}
-                  handleSelectChange={handleSelectChange}
-                  isLoading={isLoading}
-                />
+              </> : <>
+                <RegistrationStepTwo formData={formData} handleInputChange={handleInputChange} handleSelectChange={handleSelectChange} isLoading={isLoading} />
                 <div className="flex gap-4">
-                  <Button
-                    type="button"
-                    onClick={prevStep}
-                    variant="outline"
-                    className="w-full"
-                    disabled={isLoading}
-                  >
+                  <Button type="button" onClick={prevStep} variant="outline" className="w-full" disabled={isLoading}>
                     Back to Basic Info
                   </Button>
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 transition-all duration-300"
-                    disabled={isLoading}
-                  >
-                    {isLoading ? (
-                      "Creating Account..."
-                    ) : (
-                      "Complete Registration"
-                    )}
+                  <Button type="submit" className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 transition-all duration-300" disabled={isLoading}>
+                    {isLoading ? "Creating Account..." : "Complete Registration"}
                   </Button>
                 </div>
-              </>
-            )}
+              </>}
           </div>
 
           <div className="space-y-4 text-center">
@@ -271,8 +225,6 @@ const Register = () => {
           </div>
         </form>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Register;

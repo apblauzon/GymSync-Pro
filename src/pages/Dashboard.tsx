@@ -1,3 +1,4 @@
+
 import { Routes, Route, Navigate } from "react-router-dom";
 import { ProfileSection } from "@/components/dashboard/ProfileSection";
 import { StatsSection } from "@/components/dashboard/StatsSection";
@@ -11,11 +12,17 @@ import { LastSessionDate } from "@/components/dashboard/LastSessionDate";
 import { AvailableTrainer } from "@/components/dashboard/AvailableTrainer";
 import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
 import { StatsGrid } from "@/components/dashboard/StatsGrid";
+import { CalorieStats } from "@/components/dashboard/CalorieStats";
+import { DailyTip } from "@/components/dashboard/DailyTip";
 
 const Overview = () => {
   return (
     <div className="space-y-6">
       <ProfileSection />
+      <div className="grid grid-cols-2 gap-6">
+        <CalorieStats />
+        <DailyTip />
+      </div>
       <div className="grid grid-cols-4 gap-4">
         <StatsGrid />
       </div>
@@ -71,7 +78,7 @@ const Dashboard = () => {
     <div className="min-h-screen bg-[#F8F7FF] flex">
       <DashboardSidebar />
       <main className="flex-1 p-6 overflow-y-auto">
-        <div className="max-w-[1200px] mx-auto">
+        <div className="max-w-[1600px] mx-auto">
           <Routes>
             <Route path="/" element={<Navigate to="overview" replace />} />
             <Route path="overview" element={<Overview />} />

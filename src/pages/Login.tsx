@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -119,13 +118,8 @@ const Login = () => {
     <div className="min-h-screen bg-[#F8F7FF] bg-[url('/background.jpg')] bg-cover bg-center bg-no-repeat flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="bg-white/95 backdrop-blur-sm shadow-xl rounded-2xl p-8 space-y-8">
-          {/* Logo & Header */}
+          {/* Header */}
           <div className="text-center">
-            <img 
-              src="/logo.png" 
-              alt="GymSync Pro Logo" 
-              className="h-12 mx-auto mb-6"
-            />
             <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
               Welcome Back
             </h1>

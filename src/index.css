@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700&display=swap');
 
 @tailwind base;
@@ -47,10 +48,14 @@
 
 .auth-container {
   @apply min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 to-secondary/5 p-4;
+  background-image: url('/gym-pattern.png'), linear-gradient(to bottom right, rgba(79, 70, 229, 0.05), rgba(6, 182, 212, 0.05));
+  background-size: 300px, cover;
+  background-repeat: repeat, no-repeat;
 }
 
 .auth-card {
   @apply w-full max-w-md bg-white rounded-2xl shadow-lg p-8;
+  animation: scale-up 0.4s ease-out;
 }
 
 .form-group {
@@ -63,4 +68,48 @@
 
 .progress-bar-fill {
   @apply h-full bg-gradient-to-r from-primary to-secondary transition-all duration-500 ease-out;
+}
+
+.password-strength-meter {
+  @apply h-1 mt-2 rounded-full overflow-hidden bg-gray-200 transition-all duration-300;
+}
+
+.password-strength-meter div {
+  @apply h-full transition-all duration-300;
+}
+
+.password-strength-weak { @apply w-1/4 bg-red-500; }
+.password-strength-fair { @apply w-2/4 bg-yellow-500; }
+.password-strength-good { @apply w-3/4 bg-blue-500; }
+.password-strength-strong { @apply w-full bg-green-500; }
+
+@keyframes scale-up {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.step-transition {
+  @apply transition-all duration-300 transform;
+}
+
+.step-enter {
+  @apply translate-x-full opacity-0;
+}
+
+.step-enter-active {
+  @apply translate-x-0 opacity-100;
+}
+
+.step-exit {
+  @apply translate-x-0 opacity-100;
+}
+
+.step-exit-active {
+  @apply -translate-x-full opacity-0;
 }

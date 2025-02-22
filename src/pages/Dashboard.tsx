@@ -11,7 +11,6 @@ import { LastSessionDate } from "@/components/dashboard/LastSessionDate";
 import { AvailableTrainer } from "@/components/dashboard/AvailableTrainer";
 import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
 import { StatsGrid } from "@/components/dashboard/StatsGrid";
-import { ContactAdmin } from "@/components/dashboard/ContactAdmin";
 
 const Overview = () => {
   return (
@@ -23,28 +22,45 @@ const Overview = () => {
       <ActivityTracking />
       <WorkoutStreak />
       <StatsSection />
-      <ContactAdmin />
     </div>
   );
 };
 
 const Progress = () => {
-  return <ProgressSection />;
+  return (
+    <div className="space-y-6">
+      <h2 className="text-2xl font-semibold">Your Progress</h2>
+      <ProgressSection />
+    </div>
+  );
 };
 
 const Health = () => {
-  return <HeartMetrics />;
+  return (
+    <div className="space-y-6">
+      <h2 className="text-2xl font-semibold">Health Metrics</h2>
+      <div className="grid grid-cols-3 gap-4">
+        <HeartMetrics />
+        <WalkingTimeCard />
+        <LastSessionDate />
+      </div>
+    </div>
+  );
 };
 
 const Running = () => {
-  return <WalkingTimeCard />;
+  return (
+    <div className="space-y-6">
+      <h2 className="text-2xl font-semibold">Running Stats</h2>
+      <AvailableTrainer />
+    </div>
+  );
 };
 
 const Sessions = () => {
   return (
-    <div className="space-y-4">
-      <LastSessionDate />
-      <AvailableTrainer />
+    <div className="space-y-6">
+      <h2 className="text-2xl font-semibold">Upcoming Sessions</h2>
       <UpcomingEvents />
     </div>
   );

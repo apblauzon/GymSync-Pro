@@ -233,10 +233,10 @@ const Login = () => {
               <div className="text-sm text-gray-600">
                 Need help?{" "}
                 <a 
-                  href="#" 
+                  href="/contact-admin" 
                   className="text-primary hover:underline font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
                 >
-                  Contact Support
+                  Contact Admin
                 </a>
               </div>
             </div>

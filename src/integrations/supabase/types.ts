@@ -284,30 +284,27 @@ export type Database = {
       user_credits: {
         Row: {
           created_at: string
-          credit: number | null
           email: string | null
+          fingerprint: string
           id: string
-          ip_address: string
+          last_session: string | null
           remaining_credits: number
-          user_id: string | null
         }
         Insert: {
           created_at?: string
-          credit?: number | null
           email?: string | null
+          fingerprint?: string
           id?: string
-          ip_address: string
+          last_session?: string | null
           remaining_credits?: number
-          user_id?: string | null
         }
         Update: {
           created_at?: string
-          credit?: number | null
           email?: string | null
+          fingerprint?: string
           id?: string
-          ip_address?: string
+          last_session?: string | null
           remaining_credits?: number
-          user_id?: string | null
         }
         Relationships: []
       }
